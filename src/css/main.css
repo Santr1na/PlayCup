@@ -1,0 +1,356 @@
+@font-face {
+    font-family: 'Reddit Sans SemiBold'; 
+    src: local('Reddit Sans SemiBold'), url(/src/fonts/RedditSans/RedditSans-SemiBold.ttf); 
+}
+
+@font-face {
+    font-family: 'Inter Black'; 
+    src: local('Inter Black'), url(/src/fonts/Inter/static/Inter_18pt-Black.ttf); 
+}
+
+@font-face {
+    font-family: 'Inter SemiBold'; 
+    src: local('Inter SemiBold'), url(/src/fonts/Inter/static/Inter_18pt-SemiBold.ttf); 
+}
+
+@font-face {
+    font-family: 'Inter ExtraBold'; 
+    src: local('Inter ExtraBold'), url(/src/fonts/Inter/static/Inter_18pt-ExtraBold.ttf); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    transform: scale(1);
+    scrollbar-color: #464663 #00000000;
+    scrollbar-width: thin;
+}
+
+body {
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    background: #0D0E12;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header Styles */
+header {
+    position: absolute;
+    z-index: 2;
+    border-bottom: 1pt solid #464663;
+    background: #0D0E12;
+    font-size: 12px;
+    width: 100%;
+    padding: 4px 0;
+    background-size: cover;
+    background-position: top center;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO */
+.logo {
+    margin-left: 64px;
+    min-width: max-content;
+}
+
+/* Навигация левая часть */
+.log_text {
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text {
+    margin-left: 50px;
+}
+
+.text ul {
+    list-style: none;
+    display: flex;
+}
+
+#main_nav {
+    font-family: 'Inter', sans-serif;
+    padding-right: 40px;
+    display: flex;
+    min-width: 56px;
+    align-items: center;
+}
+
+#pol {
+    padding-left: 4px;
+}
+
+.text ul li a {
+    color: white;
+}
+
+/* Навигация правая часть */
+.rig {
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+}
+
+.navig {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navig ul {
+    list-style: none;
+    display: flex;
+    min-width: 60px;
+    width: 90px;
+}
+
+#navig {
+    height: 20px;
+    padding-left: 20px;
+}
+
+/* User Button */
+.btn_profile {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 5px 0;
+    padding-right: 30px;
+}
+
+.btn_profile button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 30px;
+    background: url('/src/icons/back_gold.svg') no-repeat top left;
+    background-size: cover;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.btn_profile button h4 {
+    font-size: 12px;
+    font-family: "Reddit Sans SemiBold";
+    margin-right: 4px;
+}
+
+.btn_profile button h5 {
+    margin-left: 10px;
+    font-family: 'Reddit Sans SemiBold';
+    align-content: center;
+    text-shadow: 0px -1px 12px #fff;
+}
+
+.btn_profile button h6 {
+    color: #77FF00;
+    font-family: 'Reddit Sans SemiBold';
+    text-shadow: 0px 0px 4px #77FF00;
+}
+
+#back_prof {
+    width: 32px;
+    height: 24px;
+    min-width: 32px;
+    min-height: 24px;
+    margin-left: 10px;
+    border-radius: 9999px;
+    padding: 5px 0;
+    align-items: center;
+}
+
+#pol2 {
+    width: 8px;
+    height: 8px;
+    min-width: 7px;
+    min-height: 7px;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 2px;
+    transform: scale(-1);
+    filter: drop-shadow(0px 0px 4px #77FF00);
+}
+
+#pol2 path {
+    fill: #77FF00;
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+/* Свечение в верху экрана */
+.up-glow {
+    position: absolute;
+    z-index: -2;
+    top: -540px;
+    left: 0;
+    height: 300px;
+    width: 1200px;
+    border-radius: 100%;
+    background: rgb(19, 94, 255);
+    box-shadow: 10px 10px 300px 250px rgba(19, 94, 255, 0.35);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Главная часть страницы */
+.main {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    display:block;
+}
+
+#section{
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* Задний фон */
+svg.bg {
+    width: 100%;
+    z-index: -2;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hello-window {
+    width: 100%;
+    height: auto;
+    top: 110px;
+    justify-content: center;
+    position: relative;
+    display: flex;
+}
+
+.back-hello-window {
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    width: 77vw;
+    height: auto;
+}
+
+h2 {
+    position: fixed;
+    width: max-content;
+    text-align: start;
+    vertical-align: top;
+    max-width: 70%;
+    margin-top: 2.3vw;
+    margin-left: 2vw;
+    color: #fff;
+    font-family: "Inter Black";
+    font-size: 2.6vw;
+    text-shadow: 0px 0px 40px rgba(255, 255, 255, 0.5);
+}
+
+.about {
+    position: relative;
+    width: 35%;
+    color: #fff;
+    font-family: "Inter SemiBold";
+    font-size: 1vw;
+    text-align: start;
+    vertical-align: top;
+    max-width: 40%;
+    margin-top: 7vw;
+    margin-left: 2vw;
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+}
+
+.info-text {
+    position: absolute;
+    left: 13%;
+    float: left;
+}
+
+.enter-steam {
+    position: relative;
+    width: 28%;
+    background: linear-gradient(90deg, rgba(9,84,177,1) 0%, rgba(61,85,116,1) 100%);
+    border: #00000000;
+    border-radius: 0.8vw;
+    margin-top: 2vw;
+    margin-left: 1.9vw;
+    padding: 1.2vw;
+    cursor: pointer;
+}
+
+.Steam {
+    width: 2vw;
+    height: 2vw;
+}
+
+.come-in-Steam {
+    font-size: 1.3vw;
+    font-family: "Inter ExtraBold";
+    color: #fff;
+    margin-left: 2vw;
+}
+
+.come-in-hello-window {
+    display: flex;
+    align-items: center;
+}
+
+.information {
+    position: relative;
+    display: flex;
+    margin-top: 20vw;
+    margin-left: 1.9vw;
+    justify-content: space-between;
+    width: 71%;
+}
+
+#information {
+    color: #fff;
+    font-family: "Inter ExtraBold";
+    font-size: 1.3vw;
+}
+
+.line {
+    width: 50%;
+    position: absolute;
+    top: 28vw;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+h1{
+    position: fixed;
+    top: 38vw;
+    left: 11vw;
+    color: #fff;
+    font-size: 2.5vw;
+    font-family: "Inter ExtraBold";
+}
