@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="/src/css/main.css">
 </head>
 <body>
+
+    <div class="back-header"></div>
     <div class="up-glow"></div>
     <header>
         <div class="log_text">
             <a href="#" class="logo"><img src="/src/img/logo.svg" alt="LOGO"></a>
             <nav class="text">
                 <ul>
-                    <li id="main_nav"><a href="#">Главная</a></li>
-                    <li id="main_nav"><a href="#">Турниры</a></li>
-                    <li id="main_nav"><a href="#">Топы <img id="pol" src="/src/icons/Polygon.svg"></a></li>
-                    <li id="main_nav"><a href="#">Медиа <img id="pol" src="/src/icons/Polygon.svg"></a></li>
-                    <li><a href="#">Помощь</a></li>
+                    <li class="header-hover-shadow" id="main_nav"><a href="#">Главная</a></li>
+                    <li class="header-hover-shadow" id="main_nav"><a href="#">Турниры</a></li>
+                    <li class="header-hover-shadow" id="main_nav"><a href="#">Топы <img id="pol" src="/src/icons/Polygon.svg"></a></li>
+                    <li class="header-hover-shadow" id="main_nav"><a href="#">Медиа <img id="pol" src="/src/icons/Polygon.svg"></a></li>
+                    <li class="header-hover-shadow"><a href="#">Помощь</a></li>
                 </ul>
             </nav>
         </div>
@@ -58,34 +60,407 @@
     </svg>
 
     <main class="main">
-        <section class="hello-window" id="hello-section">
+        <div class="center">
+            <section class="hello-window" id="hello-section">
                 <img src="/src/img/back-hello-window.svg" alt="" class="back-hello-window">
                 <div class="info-text">
-                    <h2>Твой путь в киберспорт</h2>
+                    <h2 class="lozung">Твой путь в киберспорт</h2>
                     <p class="about">Окунись в атмосферу игр: собирай команду, участвуй в соревнованиях, покоряй турниры, а также получай призы и возможность заработать.</p>
-                    <button class="enter-steam">
-                        <a href="#" class="come-in-hello-window">
+                    <div class="center-steam-enter">
+                        <button class="enter-steam">
                             <img src="/src/icons/Steam.svg" alt="" class="Steam">
                             <p class="come-in-Steam">Войти через Steam</p>
-                        </a>
-                    </button>
+                        </button>
+                    </div>
+                    
+
+                    <div class="information">
+                        <p class="people" id="information">xxx человек с нами</p>
+                        <p class="cup" id="information">ххх турниров проведено</p>
+                        <p class="money" id="information">ххх выиграно у нас</p>
+                    </div>
                 </div>
-                <div class="information">
-                    <p class="people" id="information">xxx человек с нами</p>
-                    <p class="cup" id="information">ххх турниров проведено</p>
-                    <p class="money" id="information">ххх выиграно у нас</p>
+        </section>
+
+        <div class="line">
+            <hr color="#464663" size="0.5">
+        </div>
+
+        <section class="text-tournaments" id="section">
+            <article class="tournaments">
+                <h1>Главные турниры</h1>
+                <a href="#">
+                    <div class="tour-one" id="tour">
+                        <img id="game" src="/src/img/Group 14.png" alt="game">
+                        <div class="name-reg">
+                            <div class="name">
+                                <h2 class="game">DOTA 2</h2>
+                                <h3 class="tournament">CUMBERSOME CUP</h3>
+                            </div>
+                            <div class="reg">
+                                <p class="reg">
+                                    ИДЁТ РЕГИСТРАЦИЯ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="main-info-tour">
+                            <div class="date-time">
+                                <div class="data-tour">
+                                    <p id="head-datetime">Дата</p>
+                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                </div>
+                                <div class="time-tour">
+                                    <p id="head-datetime">Время</p>
+                                    <p><time datetime="T18:12:00">18:12:00</time></p>
+                                </div>
+                            </div>
+                            <div class="mode-people">
+                                <div class="mode">
+                                    <p id="mode-people">Режим:</p>
+                                    <h4 id="edit-mode-people">1v1</h4>
+                                </div>
+                                <div class="people2">
+                                    <p id="mode-people">Участники:</p>
+                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="money2">
+                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
+                            <p>10</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="tour-two" id="tour">
+                        <img src="/src/img/Group 14.png" alt="game">
+                        <div class="name-reg">
+                            <div class="name">
+                                <h2 class="game">DOTA 2</h2>
+                                <h3 class="tournament">CUMBERSOME CUP</h3>
+                            </div>
+                            <div class="reg">
+                                <p class="reg">
+                                    ИДЁТ РЕГИСТРАЦИЯ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="main-info-tour">
+                            <div class="date-time">
+                                <div class="data-tour">
+                                    <p id="head-datetime">Дата</p>
+                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                </div>
+                                <div class="time-tour">
+                                    <p id="head-datetime">Время</p>
+                                    <p><time datetime="T18:12:00">18:12:00</time></p>
+                                </div>
+                            </div>
+                            <div class="mode-people">
+                                <div class="mode">
+                                    <p id="mode-people">Режим:</p>
+                                    <h4 id="edit-mode-people">1v1</h4>
+                                </div>
+                                <div class="people2">
+                                    <p id="mode-people">Участники:</p>
+                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="money2">
+                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
+                            <p>10</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="tour-three" id="tour">
+                        <img src="/src/img/Group 14.png" alt="game">
+                        <div class="name-reg">
+                            <div class="name">
+                                <h2 class="game">DOTA 2</h2>
+                                <h3 class="tournament">CUMBERSOME CUP</h3>
+                            </div>
+                            <div class="reg">
+                                <p class="reg">
+                                    ИДЁТ РЕГИСТРАЦИЯ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="main-info-tour">
+                            <div class="date-time">
+                                <div class="data-tour">
+                                    <p id="head-datetime">Дата</p>
+                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                </div>
+                                <div class="time-tour">
+                                    <p id="head-datetime">Время</p>
+                                    <p><time datetime="T18:12:00">18:12:00</time></p>
+                                </div>
+                            </div>
+                            <div class="mode-people">
+                                <div class="mode">
+                                    <p id="mode-people">Режим:</p>
+                                    <h4 id="edit-mode-people">1v1</h4>
+                                </div>
+                                <div class="people2">
+                                    <p id="mode-people">Участники:</p>
+                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="money2">
+                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
+                            <p>10</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="tour-four" id="tour">
+                        <img src="/src/img/Group 14.png" alt="game">
+                        <div class="name-reg">
+                            <div class="name">
+                                <h2 class="game">DOTA 2</h2>
+                                <h3 class="tournament">CUMBERSOME CUP</h3>
+                            </div>
+                            <div class="reg">
+                                <p class="reg">
+                                    ИДЁТ РЕГИСТРАЦИЯ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="main-info-tour">
+                            <div class="date-time">
+                                <div class="data-tour">
+                                    <p id="head-datetime">Дата</p>
+                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                </div>
+                                <div class="time-tour">
+                                    <p id="head-datetime">Время</p>
+                                    <p><time datetime="T18:12:00">18:12:00</time></p>
+                                </div>
+                            </div>
+                            <div class="mode-people">
+                                <div class="mode">
+                                    <p id="mode-people">Режим:</p>
+                                    <h4 id="edit-mode-people">1v1</h4>
+                                </div>
+                                <div class="people2">
+                                    <p id="mode-people">Участники:</p>
+                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="money2">
+                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
+                            <p>10</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="tour-five" id="tour">
+                        <img src="/src/img/Group 14.png" alt="game">
+                        <div class="name-reg">
+                            <div class="name">
+                                <h2 class="game">DOTA 2</h2>
+                                <h3 class="tournament">CUMBERSOME CUP</h3>
+                            </div>
+                            <div class="reg">
+                                <p class="reg">
+                                    ИДЁТ РЕГИСТРАЦИЯ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="main-info-tour">
+                            <div class="date-time">
+                                <div class="data-tour">
+                                    <p id="head-datetime">Дата</p>
+                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                </div>
+                                <div class="time-tour">
+                                    <p id="head-datetime">Время</p>
+                                    <p><time datetime="T18:12:00">18:12:00</time></p>
+                                </div>
+                            </div>
+                            <div class="mode-people">
+                                <div class="mode">
+                                    <p id="mode-people">Режим:</p>
+                                    <h4 id="edit-mode-people">1v1</h4>
+                                </div>
+                                <div class="people2">
+                                    <p id="mode-people">Участники:</p>
+                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="money2">
+                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
+                            <p>10</p>
+                        </div>
+                    </div>
+                </a>  
+                
+                <div class="more-event">
+                    <h4 class="text-more-event">Больше событий</h4>
+                    <img src="/src/icons/Polygon.svg" alt="" class="polygon">
                 </div>
-                <div class="line">
+            </article>
+
+            <article class="news-task">
+
+                <button class="go-play">
+                    <img src="/src/icons/gamepad.svg" alt="" class="gamepad">
+                    <p class="join">Присоединиться</p>
+                </button>
+
+                
+                <div class="line2">
                     <hr color="#1C2034" size="0.5">
                 </div>
+                
+                
+                <div class="news">
+                    <div class="image-news">
+                        <img src="/src/img/img-news.svg" alt="" class="">
+                    </div>
+                    
+                    <div class="news-text">
+                        <h4 class="head-news">Рады объявить о новом сотрудничестве</h4>
+                        <p class="description">Сегодня мы рады вам сообщить, что наш сайт принял новое партнёрское соглашение.</p>
+                        <a href="#">
+                            <div class="learn-more">
+                                <p>Узнать больше</p>
+                                <img src="/src/icons/Polygon.svg" alt="" id="pol">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="task">
+                    <div class="task-full">
+                        <h4>Задания</h4>
+                        <div class="task-one">
+                            <div class="condition-one" id="condition">
+                                <img src="/src/icons/Ellipse.svg" alt="" class="point">
+                                <h5 class="condition">Участвовать в 10 разных турнирах по CS2</h5>
+                                <img src="/src/icons/tick-square.svg" alt="" class="state">
+                            </div>
+                            <p class="term">До 12.02.2025 12:00</p>
+                        </div>
+    
+                        <div class="line-task">
+                            <hr color="#0B4EA1" size="0.5">
+                        </div>
+    
+                        <div class="task-two">
+                            <div class="condition-two" id="condition">
+                                <img src="/src/icons/Ellipse.svg" alt="" class="point">
+                                <h5 class="condition">Участвовать в 10 разных турнирах по CS2</h5>
+                                <img src="/src/icons/close-square.svg" alt="" class="state">
+                            </div>
+                            <p class="term">До 12.02.2025 12:00</p>
+                        </div>
+    
+                        <div class="line-task">
+                            <hr color="#0B4EA1" size="0.5">
+                        </div>
+    
+                        <div class="task-three">
+                            <div class="condition-three" id="condition">
+                                <img src="/src/icons/Ellipse.svg" alt="" class="point">
+                                <h5 class="condition">Участвовать в 10 разных турнирах по CS2</h5>
+                                <img src="/src/icons/close-square.svg" alt="" class="state">
+                            </div>
+                            <p class="term">До 12.02.2025 12:00</p>
+                        </div>
+    
+                        <div class="line-task">
+                            <hr color="#0B4EA1" size="0.5">
+                        </div>
+    
+                        <div class="task-four">
+                            <div class="condition-four" id="condition">
+                                <img src="/src/icons/Ellipse.svg" alt="" class="point">
+                                <h5 class="condition">Участвовать в 10 разных турнирах по CS2</h5>
+                                <img src="/src/icons/close-square.svg" alt="" class="state">
+                            </div>
+                            <p class="term">До 12.02.2025 12:00</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </section>
 
-        <section class="text-tournaments">
+            <div class="glow-down">
+                <img src="/src/img/glows_down.png" alt="">
+            </div>  
 
-            <h1>Главные турниры</h1>
+        </div>
 
-        </section>
+              
     </main>
+
+    <footer>
+            <div class="footer-up">
+                <div class="footer-up-up">
+                    <div class="Logo">
+                        <img src="/src/icons/Logo_footer.svg" alt="">
+                    </div>
+                    <div class="act-gamers">
+                        <div class="now-play">
+                            <p class="quantity">966<p class="player">играют</p></p>
+                        </div>
+                        <a href="#" id="white-link"><div class="act-tour" id="tour-cup-history">Активные турниры</div></a>
+                        <a href="#" id="white-link"><div class="system-cup" id="tour-cup-history">Система призов</div></a>
+                        <a href="#" id="white-link"><div class="history" id="tour-cup-history">История</div></a>
+                        
+                        
+                    </div>
+                    <div class="help">
+                        <div class="quantity-online">
+                            <p class="quantity2">2848<p class="online">онлайн</p></p>
+                        </div>
+                        <a href="#" id="white-link"><div class="questions" id="ques-supp-comm">Вопросы</div></a>
+                        <a href="#" id="white-link"><div class="support" id="ques-supp-comm">Поддержка</div></a>
+                        <a href="#" id="white-link"><div class="comments" id="ques-supp-comm">Отзывы</div></a>
+                    </div>
+                </div>
+                <div class="footer-social-media">
+                    <a href="#"><img src="/src/icons/VK-footer.svg" alt="" class="VK" id="social-media"></a>
+                    <a href="#"><img src="/src/icons/Steam-footer.svg" alt="" class="Steam-img" id="social-media"></a>
+                    <a href="#"><img src="/src/icons/TG-footer.svg" alt="" class="Telegram" id="social-media"></a>
+                </div>
+                
+            </div>
+            <div class="footer-down">
+                <div class="footer-down-left">
+                    <a href="#" id="gray-link"><p>О нас</p></a>
+                    <a href="#" id="gray-link"><p>Условия</p></a>
+                    <div class="language">
+                        <p>Русский</p>
+                        <svg width="9" height="7" viewBox="0 0 9 7" fill="#717171" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.08826 0.330127C7.85806 0.330127 8.33919 1.16346 7.95429 1.83013L5.35621 6.33013C4.97131 6.99679 4.00906 6.99679 3.62416 6.33013L1.02608 1.83013C0.641184 1.16346 1.12231 0.330127 1.89211 0.330127L7.08826 0.330127Z" fill="#717171"/>
+                        </svg>
+                            
+                    </div>
+                </div>
+                <div class="company-year">
+                    <p>©playcup — All Rights Reserved</p>
+                    <p>2025</p>
+                </div>
+            </div>
+        
+    </footer>
     
 </body>
 </html>
