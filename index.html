@@ -5,6 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlayCup</title>
     <link rel="stylesheet" href="/src/css/main.css">
+
+    <script>
+function print(card, info, popup) {
+    console.log("print() вызван с элементами:", card, info, popup);
+
+    if (!card || !info || !popup) {
+        console.error("Ошибка: один из элементов не найден!", {
+            card: card,
+            info: info,
+            popup: popup
+        });
+        return;
+    }
+
+    if (card.classList.contains("active")) {
+        card.classList.remove("active");
+        popup.classList.remove("fade-in");
+        popup.classList.add("fade-out");
+        setTimeout(() => { popup.style.display = "none"; }, 100);
+
+        card.classList.remove("hover-effect");
+        card.style.background = "linear-gradient(to right, #162740, #0E1420)";
+    } else {
+        card.classList.add("active");
+        info.style.display = "flex";
+        popup.classList.remove("fade-out");
+        popup.classList.add("fade-in");
+        setTimeout(() => { popup.style.display = "block"; }, 150);
+
+        card.classList.add("hover-effect");
+        card.style.background = "linear-gradient(135deg, #0E2D4B, #15223E, #0F1522)";
+    }
+}
+
+function showPopup(block) {
+    let blockName = block.classList[0] || block.id;
+
+    console.log(`Кликнули на блок: ${blockName}`);
+
+    switch (blockName) {
+        case "tour-one":
+            print(
+                    document.querySelector("."+blockName),
+                    document.querySelector(".full-width-tour"),
+                    document.querySelector(".full-info-tour-one")
+            );
+
+            break;
+        case "tour-two":
+            print(
+                    document.querySelector("."+blockName),
+                    document.querySelector(".full-width-tour"),
+                    document.querySelector(".full-info-tour-two")
+            );
+            break;
+        case "tour-three":
+            print(
+                    document.querySelector("."+blockName),
+                    document.querySelector(".full-width-tour"),
+                    document.querySelector(".full-info-tour-three")
+            );
+            break;
+        case "tour-four":
+            print(
+                    document.querySelector("."+blockName),
+                    document.querySelector(".full-width-tour"),
+                    document.querySelector(".full-info-tour-four")
+            );
+            break;
+        case "tour-five":
+            print(
+                    document.querySelector("."+blockName),
+                    document.querySelector(".full-width-tour"),
+                    document.querySelector(".full-info-tour-five")
+            );
+            break;
+        default:
+            console.error(`Неизвестный блок: ${blockName}`);
+    }
+}
+
+
+    </script>
+
 </head>
 <body>
 
@@ -14,12 +98,12 @@
         <div class="log_text">
             <a href="#" class="logo"><img src="/src/img/logo.svg" alt="LOGO"></a>
             <nav class="text">
-                <ul>
-                    <li class="header-hover-shadow" id="main_nav"><a href="#">Главная</a></li>
-                    <li class="header-hover-shadow" id="main_nav"><a href="#">Турниры</a></li>
-                    <li class="header-hover-shadow" id="main_nav"><a href="#">Топы <img id="pol" src="/src/icons/Polygon.svg"></a></li>
-                    <li class="header-hover-shadow" id="main_nav"><a href="#">Медиа <img id="pol" src="/src/icons/Polygon.svg"></a></li>
-                    <li class="header-hover-shadow"><a href="#">Помощь</a></li>
+                <ul class="navigation-main">
+                    <li class="header-hover-shadow" id="main_nav">Главная</a></li>
+                    <li class="header-hover-shadow" id="main_nav">Турниры</a></li>
+                    <li class="header-hover-shadow" id="main_nav">Топы <img id="pol" src="/src/icons/Polygon.svg"></a></li>
+                    <li class="header-hover-shadow" id="main_nav">Медиа <img id="pol" src="/src/icons/Polygon.svg"></a></li>
+                    <li class="header-hover-shadow">Помощь</a></li>
                 </ul>
             </nav>
         </div>
@@ -27,8 +111,8 @@
             <nav class="navig">
                 <ul>
                     <li>
-                        <a href="#"><img id="navig" src="/src/icons/bell.svg" alt="bell"></a>
-                        <a href="#"><img id="navig" src="/src/icons/chat.svg" alt="chat"></a>
+                        <img id="navig" src="/src/icons/bell.svg" alt="bell"></a>
+                        <img id="navig" src="/src/icons/chat.svg" alt="chat"></a>
                     </li>
                 </ul>
             </nav>
@@ -44,7 +128,7 @@
                 </button>
             </div>
             <div class="menu">
-                <a href="#"><img src="/src/icons/menu.svg" alt="menu"></a>
+                <img src="/src/icons/menu.svg" alt="menu"></a>
             </div>
         </div>
     </header>
@@ -62,8 +146,7 @@
     <main class="main">
         <div class="center">
             <section class="hello-window" id="hello-section">
-                <img src="/src/img/back-hello-window.svg" alt="" class="back-hello-window">
-                <div class="info-text">
+                <div class="hello-window-info-text">
                     <h2 class="lozung">Твой путь в киберспорт</h2>
                     <p class="about">Окунись в атмосферу игр: собирай команду, участвуй в соревнованиях, покоряй турниры, а также получай призы и возможность заработать.</p>
                     <div class="center-steam-enter">
@@ -89,225 +172,651 @@
         <section class="text-tournaments" id="section">
             <article class="tournaments">
                 <h1>Главные турниры</h1>
-                <a href="#">
-                    <div class="tour-one" id="tour">
-                        <img id="game" src="/src/img/Group 14.png" alt="game">
-                        <div class="name-reg">
-                            <div class="name">
-                                <h2 class="game">DOTA 2</h2>
-                                <h3 class="tournament">CUMBERSOME CUP</h3>
-                            </div>
-                            <div class="reg">
-                                <p class="reg">
-                                    ИДЁТ РЕГИСТРАЦИЯ
-                                </p>
-                            </div>
-                        </div>
-                        <div class="main-info-tour">
-                            <div class="date-time">
-                                <div class="data-tour">
-                                    <p id="head-datetime">Дата</p>
-                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
+                <div class="tour-cool-padding">
+                    <div class="tour-one" onclick="showPopup(this)">
+                        <img class="game-image" id="game" src="/src/img/Group 14.svg" alt="game">  
+                        <div class="full-width-tour">
+                            <div class="name-reg">
+                                <div class="name">
+                                    <h2 class="game">DOTA 2</h2>
+                                    <h3 class="tournament">CUMBERSOME CUP</h3>
                                 </div>
-                                <div class="time-tour">
-                                    <p id="head-datetime">Время</p>
-                                    <p><time datetime="T18:12:00">18:12:00</time></p>
+                                <div class="reg">
+                                    <p class="reg">
+                                        ИДЁТ РЕГИСТРАЦИЯ
+                                    </p>
                                 </div>
                             </div>
-                            <div class="mode-people">
-                                <div class="mode">
-                                    <p id="mode-people">Режим:</p>
-                                    <h4 id="edit-mode-people">1v1</h4>
+                            <div class="main-info-tour">
+                                <div class="date-time">
+                                    <div class="data-tour">
+                                        <p id="head-datetime">Дата</p>
+                                        <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                    </div>
+                                    <div class="time-tour">
+                                        <p id="head-datetime">Время</p>
+                                        <p><time datetime="T18:12:00">18:12:00</time></p>
+                                    </div>
                                 </div>
-                                <div class="people2">
-                                    <p id="mode-people">Участники:</p>
-                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                <div class="mode-people">
+                                    <div class="mode">
+                                        <p id="mode-people">Формат:</p>
+                                        <h4 id="edit-mode-people">1v1</h4>
+                                    </div>
+                                    <div class="people2">
+                                        <p id="mode-people">Участники:</p>
+                                        <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="money2">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" id="bitcoin">
+                                    <path d="M6.82739 6.54749H10.3812C11.169 6.54749 11.808 7.25651 11.808 7.97428C11.808 8.76208 11.169 9.40107 10.3812 9.40107H6.82739V6.54749Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6.82739 9.39227H10.8889C11.7905 9.39227 12.5171 10.0313 12.5171 10.8191C12.5171 11.6069 11.7905 12.2459 10.8889 12.2459H6.82739V9.39227Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 6.54749H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 12.2372H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.1033 16.8793C13.293 16.8793 16.6895 13.4829 16.6895 9.29312C16.6895 5.10337 13.293 1.70691 9.1033 1.70691C4.91355 1.70691 1.51709 5.10337 1.51709 9.29312C1.51709 13.4829 4.91355 16.8793 9.1033 16.8793Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10"/>
+                                    </svg>
                                     
-                                </div>
+                                <p>10</p>
                             </div>
                         </div>
-                        <div class="money2">
-                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
-                            <p>10</p>
-                        </div>
+                            
                     </div>
-                </a>
 
-                <a href="#">
-                    <div class="tour-two" id="tour">
-                        <img src="/src/img/Group 14.png" alt="game">
-                        <div class="name-reg">
-                            <div class="name">
-                                <h2 class="game">DOTA 2</h2>
-                                <h3 class="tournament">CUMBERSOME CUP</h3>
+                    <div id="full-info-tour" class="full-info-tour-one">
+                        <div class="bottom-content-info-tour">
+                            <div class="info-tour-in-window">
+                                <p class="info-text">Инфо</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.7011 27.6782C22.5792 27.6782 28.2067 22.0507 28.2067 15.1727C28.2067 8.29462 22.5792 2.66711 15.7011 2.66711C8.82306 2.66711 3.19556 8.29462 3.19556 15.1727C3.19556 22.0507 8.82306 27.6782 15.7011 27.6782Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.7009 10.1705V16.4233" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.6936 20.175H15.7048" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                             </div>
-                            <div class="reg">
-                                <p class="reg">
-                                    ИДЁТ РЕГИСТРАЦИЯ
-                                </p>
-                            </div>
-                        </div>
-                        <div class="main-info-tour">
-                            <div class="date-time">
-                                <div class="data-tour">
-                                    <p id="head-datetime">Дата</p>
-                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
-                                </div>
-                                <div class="time-tour">
-                                    <p id="head-datetime">Время</p>
-                                    <p><time datetime="T18:12:00">18:12:00</time></p>
-                                </div>
-                            </div>
-                            <div class="mode-people">
-                                <div class="mode">
-                                    <p id="mode-people">Режим:</p>
-                                    <h4 id="edit-mode-people">1v1</h4>
-                                </div>
-                                <div class="people2">
-                                    <p id="mode-people">Участники:</p>
-                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                            <div class="rules-tour-in-window">
+                                <p class="info-text">Правила</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28.3707 21.1006V6.00633C28.3707 4.50567 27.1452 3.39267 25.657 3.51773H25.582C22.9558 3.74283 18.9666 5.08092 16.7406 6.48155L16.528 6.61911C16.1653 6.84421 15.5651 6.84421 15.2024 6.61911L14.8898 6.43152C12.6638 5.04341 8.68699 3.71782 6.06082 3.50522C4.57266 3.38017 3.35962 4.50567 3.35962 5.99383V21.1006C3.35962 22.3011 4.33505 23.4266 5.53559 23.5767L5.89825 23.6267C8.61196 23.9893 12.8013 25.365 15.2024 26.678L15.2524 26.703C15.5901 26.8906 16.1278 26.8906 16.4529 26.703C18.854 25.3775 23.0559 23.9893 25.7821 23.6267L26.1948 23.5767C27.3953 23.4266 28.3707 22.3011 28.3707 21.1006Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.865 7.03162V25.79" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.5501 10.7833H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.488 14.535H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg> 
                                     
-                                </div>
                             </div>
-                        </div>
-                        <div class="money2">
-                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
-                            <p>10</p>
-                        </div>
-                    </div>
-                </a>
+                            <div class="map-tour-in-window">
+                                <p class="info-text">Карты</p>
 
-                <a href="#">
-                    <div class="tour-three" id="tour">
-                        <img src="/src/img/Group 14.png" alt="game">
-                        <div class="name-reg">
-                            <div class="name">
-                                <h2 class="game">DOTA 2</h2>
-                                <h3 class="tournament">CUMBERSOME CUP</h3>
-                            </div>
-                            <div class="reg">
-                                <p class="reg">
-                                    ИДЁТ РЕГИСТРАЦИЯ
-                                </p>
-                            </div>
-                        </div>
-                        <div class="main-info-tour">
-                            <div class="date-time">
-                                <div class="data-tour">
-                                    <p id="head-datetime">Дата</p>
-                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
-                                </div>
-                                <div class="time-tour">
-                                    <p id="head-datetime">Время</p>
-                                    <p><time datetime="T18:12:00">18:12:00</time></p>
-                                </div>
-                            </div>
-                            <div class="mode-people">
-                                <div class="mode">
-                                    <p id="mode-people">Режим:</p>
-                                    <h4 id="edit-mode-people">1v1</h4>
-                                </div>
-                                <div class="people2">
-                                    <p id="mode-people">Участники:</p>
-                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.88647 9.89553V22.0634C2.88647 24.4395 4.57473 25.4149 6.62564 24.2394L9.56445 22.5637C10.2022 22.201 11.2652 22.1635 11.928 22.5011L18.4934 25.7901C19.1562 26.1153 20.2192 26.0902 20.857 25.7276L26.2719 22.6262C26.9597 22.226 27.5349 21.2506 27.5349 20.4502V8.28231C27.5349 5.90626 25.8467 4.93082 23.7958 6.10635L20.857 7.78209C20.2192 8.14475 19.1562 8.18227 18.4934 7.84462L11.928 4.56816C11.2652 4.24302 10.2022 4.26803 9.56445 4.63069L4.14954 7.73207C3.44923 8.13225 2.88647 9.10768 2.88647 9.89553Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.7273 5.16846V21.4257" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.6936 8.44482V25.1773" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                                     
-                                </div>
                             </div>
-                        </div>
-                        <div class="money2">
-                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
-                            <p>10</p>
-                        </div>
-                    </div>
-                </a>
+                            <div class="team-tour-in-window">
+                                <p class="info-text">Команды</p>
 
-                <a href="#">
-                    <div class="tour-four" id="tour">
-                        <img src="/src/img/Group 14.png" alt="game">
-                        <div class="name-reg">
-                            <div class="name">
-                                <h2 class="game">DOTA 2</h2>
-                                <h3 class="tournament">CUMBERSOME CUP</h3>
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.6966 9.12023C22.6216 9.10773 22.5341 9.10773 22.459 9.12023C20.7333 9.05771 19.3577 7.64458 19.3577 5.8938C19.3577 4.1055 20.7958 2.66736 22.5841 2.66736C24.3724 2.66736 25.8105 4.11801 25.8105 5.8938C25.798 7.64458 24.4224 9.05771 22.6966 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21.4093 18.2243C23.1226 18.512 25.011 18.2118 26.3365 17.3239C28.0998 16.1484 28.0998 14.2226 26.3365 13.047C24.9984 12.1591 23.0851 11.859 21.3718 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.65319 9.12023C7.72823 9.10773 7.81576 9.10773 7.8908 9.12023C9.61657 9.05771 10.9922 7.64458 10.9922 5.8938C10.9922 4.1055 9.55404 2.66736 7.76574 2.66736C5.97745 2.66736 4.53931 4.11801 4.53931 5.8938C4.55181 7.64458 5.92743 9.05771 7.65319 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.9413 18.2243C7.22804 18.512 5.3397 18.2118 4.01411 17.3239C2.25083 16.1484 2.25083 14.2226 4.01411 13.047C5.35221 12.1591 7.26556 11.859 8.97882 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.1937 18.4615C15.1187 18.449 15.0311 18.449 14.9561 18.4615C13.2303 18.399 11.8547 16.9859 11.8547 15.2351C11.8547 13.4468 13.2929 12.0087 15.0812 12.0087C16.8695 12.0087 18.3076 13.4593 18.3076 15.2351C18.2951 16.9859 16.9195 18.4115 15.1937 18.4615Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.5542 22.4008C9.79087 23.5763 9.79087 25.5022 11.5542 26.6777C13.555 28.0158 16.8315 28.0158 18.8324 26.6777C20.5957 25.5022 20.5957 23.5763 18.8324 22.4008C16.844 21.0752 13.555 21.0752 11.5542 22.4008Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                             </div>
-                            <div class="reg">
-                                <p class="reg">
-                                    ИДЁТ РЕГИСТРАЦИЯ
-                                </p>
-                            </div>
-                        </div>
-                        <div class="main-info-tour">
-                            <div class="date-time">
-                                <div class="data-tour">
-                                    <p id="head-datetime">Дата</p>
-                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
-                                </div>
-                                <div class="time-tour">
-                                    <p id="head-datetime">Время</p>
-                                    <p><time datetime="T18:12:00">18:12:00</time></p>
-                                </div>
-                            </div>
-                            <div class="mode-people">
-                                <div class="mode">
-                                    <p id="mode-people">Режим:</p>
-                                    <h4 id="edit-mode-people">1v1</h4>
-                                </div>
-                                <div class="people2">
-                                    <p id="mode-people">Участники:</p>
-                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="money2">
-                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
-                            <p>10</p>
-                        </div>
-                    </div>
-                </a>
+                            <div class="stream-tour-in-window">
+                                <p class="info-text">Трансляция</p>
 
-                <a href="#">
-                    <div class="tour-five" id="tour">
-                        <img src="/src/img/Group 14.png" alt="game">
-                        <div class="name-reg">
-                            <div class="name">
-                                <h2 class="game">DOTA 2</h2>
-                                <h3 class="tournament">CUMBERSOME CUP</h3>
-                            </div>
-                            <div class="reg">
-                                <p class="reg">
-                                    ИДЁТ РЕГИСТРАЦИЯ
-                                </p>
-                            </div>
-                        </div>
-                        <div class="main-info-tour">
-                            <div class="date-time">
-                                <div class="data-tour">
-                                    <p id="head-datetime">Дата</p>
-                                    <p><time datetime="2025-02-31">31.02.2025</time></p>
-                                </div>
-                                <div class="time-tour">
-                                    <p id="head-datetime">Время</p>
-                                    <p><time datetime="T18:12:00">18:12:00</time></p>
-                                </div>
-                            </div>
-                            <div class="mode-people">
-                                <div class="mode">
-                                    <p id="mode-people">Режим:</p>
-                                    <h4 id="edit-mode-people">1v1</h4>
-                                </div>
-                                <div class="people2">
-                                    <p id="mode-people">Участники:</p>
-                                    <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.40428 2.66736H22.298C26.7499 2.66736 27.8629 3.78035 27.8629 8.21983V16.1359C27.8629 20.5878 26.7499 21.6883 22.3105 21.6883H8.40428C3.9648 21.7008 2.85181 20.5878 2.85181 16.1484V8.21983C2.85181 3.78035 3.9648 2.66736 8.40428 2.66736Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.3572 21.7008V27.6785" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.85181 16.4236H27.8629" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.72998 27.6785H20.985" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                                     
-                                </div>
                             </div>
-                        </div>
-                        <div class="money2">
-                            <img id="bitcoin" src="/src/icons/bitcoin.svg" alt="">
-                            <p>10</p>
+                            <div class="prize-tour-in-window">
+                                <p class="info-text">Призовые</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.09048 2.74124C4.95336 0.878363 7.74096 0.166138 11.3341 0.166138H19.71C23.3032 0.166138 26.0908 0.878363 27.9536 2.74124C29.8165 4.60412 30.5287 7.39172 30.5287 10.9849V19.3607C30.5287 22.9539 29.8165 25.7415 27.9536 27.6044C26.0908 29.4673 23.3032 30.1795 19.71 30.1795H11.3341C7.74096 30.1795 4.95336 29.4673 3.09048 27.6044C1.22761 25.7415 0.515381 22.9539 0.515381 19.3607V10.9849C0.515381 7.39172 1.22761 4.60412 3.09048 2.74124ZM4.57114 4.22189C3.29308 5.49995 2.60934 7.59824 2.60934 10.9849V19.3607C2.60934 22.7474 3.29308 24.8457 4.57114 26.1237C5.84919 27.4018 7.94749 28.0855 11.3341 28.0855H19.71C23.0966 28.0855 25.1949 27.4018 26.473 26.1237C27.751 24.8457 28.4348 22.7474 28.4348 19.3607V10.9849C28.4348 7.59824 27.751 5.49995 26.473 4.22189C25.1949 2.94384 23.0966 2.26009 19.71 2.26009H11.3341C7.94749 2.26009 5.84919 2.94384 4.57114 4.22189Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.05676 5.70763C7.02034 4.74405 8.38066 4.354 9.93801 4.354H21.1058C22.6631 4.354 24.0235 4.74405 24.987 5.70763C25.9506 6.67122 26.3407 8.03154 26.3407 9.58889V20.7567C26.3407 22.314 25.9506 23.6743 24.987 24.6379C24.0235 25.6015 22.6631 25.9915 21.1058 25.9915H9.93801C8.38066 25.9915 7.02034 25.6015 6.05676 24.6379C5.09317 23.6743 4.70312 22.314 4.70312 20.7567V9.58889C4.70312 8.03154 5.09317 6.67122 6.05676 5.70763ZM7.53741 7.18828C7.10502 7.62067 6.79708 8.35431 6.79708 9.58889V20.7567C6.79708 21.9912 7.10502 22.7249 7.53741 23.1573C7.96979 23.5896 8.70343 23.8976 9.93801 23.8976H21.1058C22.3404 23.8976 23.074 23.5896 23.5064 23.1573C23.9388 22.7249 24.2467 21.9912 24.2467 20.7567V9.58889C24.2467 8.35431 23.9388 7.62067 23.5064 7.18828C23.074 6.7559 22.3404 6.44796 21.1058 6.44796H9.93801C8.70343 6.44796 7.96979 6.7559 7.53741 7.18828Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.70312 11.683C4.70312 11.1047 5.17187 10.636 5.7501 10.636H9.2121C11.7168 10.636 13.749 12.6682 13.749 15.1729C13.749 17.6776 11.7168 19.7098 9.2121 19.7098H5.7501C5.17187 19.7098 4.70312 19.241 4.70312 18.6628C4.70312 18.0846 5.17187 17.6158 5.7501 17.6158H9.2121C10.5603 17.6158 11.6551 16.5211 11.6551 15.1729C11.6551 13.8247 10.5603 12.7299 9.2121 12.7299H5.7501C5.17187 12.7299 4.70312 12.2612 4.70312 11.683Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 12.3673C20.0588 11.7891 20.5276 11.3203 21.1058 11.3203H25.2937C25.872 11.3203 26.3407 11.7891 26.3407 12.3673C26.3407 12.9455 25.872 13.4143 25.2937 13.4143H21.1058C20.5276 13.4143 20.0588 12.9455 20.0588 12.3673Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 17.9647C20.0588 17.3865 20.5276 16.9177 21.1058 16.9177H25.2937C25.872 16.9177 26.3407 17.3865 26.3407 17.9647C26.3407 18.5429 25.872 19.0117 25.2937 19.0117H21.1058C20.5276 19.0117 20.0588 18.5429 20.0588 17.9647Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.42554 15.1728C7.42554 14.4019 8.05053 13.7769 8.82151 13.7769H8.9611C9.73208 13.7769 10.3571 14.4019 10.3571 15.1728C10.3571 15.9438 9.73208 16.5688 8.9611 16.5688H8.82151C8.05053 16.5688 7.42554 15.9438 7.42554 15.1728Z" fill="#89919F"/>
+                                </svg>
+                                    
+                            </div>
+
+                            <button class="participate">
+                                Участвовать
+                            </button>
                         </div>
                     </div>
-                </a>  
+    
+                    
+                    <div class="tour-two"  onclick="showPopup(this)">
+                        <img class="game-image" id="game" src="/src/img/Group 14.svg" alt="game">
+                        <div class="full-width-tour">
+                            <div class="name-reg">
+                                <div class="name">
+                                    <h2 class="game">DOTA 2</h2>
+                                    <h3 class="tournament">CUMBERSOME CUP</h3>
+                                </div>
+                                <div class="reg">
+                                    <p class="reg">
+                                        ИДЁТ РЕГИСТРАЦИЯ
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="main-info-tour">
+                                <div class="date-time">
+                                    <div class="data-tour">
+                                        <p id="head-datetime">Дата</p>
+                                        <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                    </div>
+                                    <div class="time-tour">
+                                        <p id="head-datetime">Время</p>
+                                        <p><time datetime="T18:12:00">18:12:00</time></p>
+                                    </div>
+                                </div>
+                                <div class="mode-people">
+                                    <div class="mode">
+                                        <p id="mode-people">Формат:</p>
+                                        <h4 id="edit-mode-people">1v1</h4>
+                                    </div>
+                                    <div class="people2">
+                                        <p id="mode-people">Участники:</p>
+                                        <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="money2">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" id="bitcoin">
+                                    <path d="M6.82739 6.54749H10.3812C11.169 6.54749 11.808 7.25651 11.808 7.97428C11.808 8.76208 11.169 9.40107 10.3812 9.40107H6.82739V6.54749Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6.82739 9.39227H10.8889C11.7905 9.39227 12.5171 10.0313 12.5171 10.8191C12.5171 11.6069 11.7905 12.2459 10.8889 12.2459H6.82739V9.39227Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 6.54749H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 12.2372H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.1033 16.8793C13.293 16.8793 16.6895 13.4829 16.6895 9.29312C16.6895 5.10337 13.293 1.70691 9.1033 1.70691C4.91355 1.70691 1.51709 5.10337 1.51709 9.29312C1.51709 13.4829 4.91355 16.8793 9.1033 16.8793Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10"/>
+                                </svg>
+
+                                <p>10</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div id="full-info-tour" class="full-info-tour-two">
+                        <div class="bottom-content-info-tour">
+                            <div class="info-tour-in-window">
+                                <p class="info-text">Инфо</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.7011 27.6782C22.5792 27.6782 28.2067 22.0507 28.2067 15.1727C28.2067 8.29462 22.5792 2.66711 15.7011 2.66711C8.82306 2.66711 3.19556 8.29462 3.19556 15.1727C3.19556 22.0507 8.82306 27.6782 15.7011 27.6782Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.7009 10.1705V16.4233" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.6936 20.175H15.7048" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="rules-tour-in-window">
+                                <p class="info-text">Правила</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28.3707 21.1006V6.00633C28.3707 4.50567 27.1452 3.39267 25.657 3.51773H25.582C22.9558 3.74283 18.9666 5.08092 16.7406 6.48155L16.528 6.61911C16.1653 6.84421 15.5651 6.84421 15.2024 6.61911L14.8898 6.43152C12.6638 5.04341 8.68699 3.71782 6.06082 3.50522C4.57266 3.38017 3.35962 4.50567 3.35962 5.99383V21.1006C3.35962 22.3011 4.33505 23.4266 5.53559 23.5767L5.89825 23.6267C8.61196 23.9893 12.8013 25.365 15.2024 26.678L15.2524 26.703C15.5901 26.8906 16.1278 26.8906 16.4529 26.703C18.854 25.3775 23.0559 23.9893 25.7821 23.6267L26.1948 23.5767C27.3953 23.4266 28.3707 22.3011 28.3707 21.1006Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.865 7.03162V25.79" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.5501 10.7833H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.488 14.535H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg> 
+                                    
+                            </div>
+                            <div class="map-tour-in-window">
+                                <p class="info-text">Карты</p>
+
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.88647 9.89553V22.0634C2.88647 24.4395 4.57473 25.4149 6.62564 24.2394L9.56445 22.5637C10.2022 22.201 11.2652 22.1635 11.928 22.5011L18.4934 25.7901C19.1562 26.1153 20.2192 26.0902 20.857 25.7276L26.2719 22.6262C26.9597 22.226 27.5349 21.2506 27.5349 20.4502V8.28231C27.5349 5.90626 25.8467 4.93082 23.7958 6.10635L20.857 7.78209C20.2192 8.14475 19.1562 8.18227 18.4934 7.84462L11.928 4.56816C11.2652 4.24302 10.2022 4.26803 9.56445 4.63069L4.14954 7.73207C3.44923 8.13225 2.88647 9.10768 2.88647 9.89553Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.7273 5.16846V21.4257" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.6936 8.44482V25.1773" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                            </div>
+                            <div class="team-tour-in-window">
+                                <p class="info-text">Команды</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.6966 9.12023C22.6216 9.10773 22.5341 9.10773 22.459 9.12023C20.7333 9.05771 19.3577 7.64458 19.3577 5.8938C19.3577 4.1055 20.7958 2.66736 22.5841 2.66736C24.3724 2.66736 25.8105 4.11801 25.8105 5.8938C25.798 7.64458 24.4224 9.05771 22.6966 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21.4093 18.2243C23.1226 18.512 25.011 18.2118 26.3365 17.3239C28.0998 16.1484 28.0998 14.2226 26.3365 13.047C24.9984 12.1591 23.0851 11.859 21.3718 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.65319 9.12023C7.72823 9.10773 7.81576 9.10773 7.8908 9.12023C9.61657 9.05771 10.9922 7.64458 10.9922 5.8938C10.9922 4.1055 9.55404 2.66736 7.76574 2.66736C5.97745 2.66736 4.53931 4.11801 4.53931 5.8938C4.55181 7.64458 5.92743 9.05771 7.65319 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.9413 18.2243C7.22804 18.512 5.3397 18.2118 4.01411 17.3239C2.25083 16.1484 2.25083 14.2226 4.01411 13.047C5.35221 12.1591 7.26556 11.859 8.97882 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.1937 18.4615C15.1187 18.449 15.0311 18.449 14.9561 18.4615C13.2303 18.399 11.8547 16.9859 11.8547 15.2351C11.8547 13.4468 13.2929 12.0087 15.0812 12.0087C16.8695 12.0087 18.3076 13.4593 18.3076 15.2351C18.2951 16.9859 16.9195 18.4115 15.1937 18.4615Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.5542 22.4008C9.79087 23.5763 9.79087 25.5022 11.5542 26.6777C13.555 28.0158 16.8315 28.0158 18.8324 26.6777C20.5957 25.5022 20.5957 23.5763 18.8324 22.4008C16.844 21.0752 13.555 21.0752 11.5542 22.4008Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="stream-tour-in-window">
+                                <p class="info-text">Трансляция</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.40428 2.66736H22.298C26.7499 2.66736 27.8629 3.78035 27.8629 8.21983V16.1359C27.8629 20.5878 26.7499 21.6883 22.3105 21.6883H8.40428C3.9648 21.7008 2.85181 20.5878 2.85181 16.1484V8.21983C2.85181 3.78035 3.9648 2.66736 8.40428 2.66736Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.3572 21.7008V27.6785" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.85181 16.4236H27.8629" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.72998 27.6785H20.985" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                            </div>
+                            <div class="prize-tour-in-window">
+                                <p class="info-text">Призовые</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.09048 2.74124C4.95336 0.878363 7.74096 0.166138 11.3341 0.166138H19.71C23.3032 0.166138 26.0908 0.878363 27.9536 2.74124C29.8165 4.60412 30.5287 7.39172 30.5287 10.9849V19.3607C30.5287 22.9539 29.8165 25.7415 27.9536 27.6044C26.0908 29.4673 23.3032 30.1795 19.71 30.1795H11.3341C7.74096 30.1795 4.95336 29.4673 3.09048 27.6044C1.22761 25.7415 0.515381 22.9539 0.515381 19.3607V10.9849C0.515381 7.39172 1.22761 4.60412 3.09048 2.74124ZM4.57114 4.22189C3.29308 5.49995 2.60934 7.59824 2.60934 10.9849V19.3607C2.60934 22.7474 3.29308 24.8457 4.57114 26.1237C5.84919 27.4018 7.94749 28.0855 11.3341 28.0855H19.71C23.0966 28.0855 25.1949 27.4018 26.473 26.1237C27.751 24.8457 28.4348 22.7474 28.4348 19.3607V10.9849C28.4348 7.59824 27.751 5.49995 26.473 4.22189C25.1949 2.94384 23.0966 2.26009 19.71 2.26009H11.3341C7.94749 2.26009 5.84919 2.94384 4.57114 4.22189Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.05676 5.70763C7.02034 4.74405 8.38066 4.354 9.93801 4.354H21.1058C22.6631 4.354 24.0235 4.74405 24.987 5.70763C25.9506 6.67122 26.3407 8.03154 26.3407 9.58889V20.7567C26.3407 22.314 25.9506 23.6743 24.987 24.6379C24.0235 25.6015 22.6631 25.9915 21.1058 25.9915H9.93801C8.38066 25.9915 7.02034 25.6015 6.05676 24.6379C5.09317 23.6743 4.70312 22.314 4.70312 20.7567V9.58889C4.70312 8.03154 5.09317 6.67122 6.05676 5.70763ZM7.53741 7.18828C7.10502 7.62067 6.79708 8.35431 6.79708 9.58889V20.7567C6.79708 21.9912 7.10502 22.7249 7.53741 23.1573C7.96979 23.5896 8.70343 23.8976 9.93801 23.8976H21.1058C22.3404 23.8976 23.074 23.5896 23.5064 23.1573C23.9388 22.7249 24.2467 21.9912 24.2467 20.7567V9.58889C24.2467 8.35431 23.9388 7.62067 23.5064 7.18828C23.074 6.7559 22.3404 6.44796 21.1058 6.44796H9.93801C8.70343 6.44796 7.96979 6.7559 7.53741 7.18828Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.70312 11.683C4.70312 11.1047 5.17187 10.636 5.7501 10.636H9.2121C11.7168 10.636 13.749 12.6682 13.749 15.1729C13.749 17.6776 11.7168 19.7098 9.2121 19.7098H5.7501C5.17187 19.7098 4.70312 19.241 4.70312 18.6628C4.70312 18.0846 5.17187 17.6158 5.7501 17.6158H9.2121C10.5603 17.6158 11.6551 16.5211 11.6551 15.1729C11.6551 13.8247 10.5603 12.7299 9.2121 12.7299H5.7501C5.17187 12.7299 4.70312 12.2612 4.70312 11.683Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 12.3673C20.0588 11.7891 20.5276 11.3203 21.1058 11.3203H25.2937C25.872 11.3203 26.3407 11.7891 26.3407 12.3673C26.3407 12.9455 25.872 13.4143 25.2937 13.4143H21.1058C20.5276 13.4143 20.0588 12.9455 20.0588 12.3673Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 17.9647C20.0588 17.3865 20.5276 16.9177 21.1058 16.9177H25.2937C25.872 16.9177 26.3407 17.3865 26.3407 17.9647C26.3407 18.5429 25.872 19.0117 25.2937 19.0117H21.1058C20.5276 19.0117 20.0588 18.5429 20.0588 17.9647Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.42554 15.1728C7.42554 14.4019 8.05053 13.7769 8.82151 13.7769H8.9611C9.73208 13.7769 10.3571 14.4019 10.3571 15.1728C10.3571 15.9438 9.73208 16.5688 8.9611 16.5688H8.82151C8.05053 16.5688 7.42554 15.9438 7.42554 15.1728Z" fill="#89919F"/>
+                                </svg>
+                                    
+                            </div>
+
+                            <button class="participate">
+                                Участвовать
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="tour-three"  onclick="showPopup(this)">
+                        <img class="game-image" id="game" src="/src/img/Group 14.svg" alt="game">
+                        <div class="full-width-tour">
+                            <div class="name-reg">
+                                <div class="name">
+                                    <h2 class="game">DOTA 2</h2>
+                                    <h3 class="tournament">CUMBERSOME CUP</h3>
+                                </div>
+                                <div class="reg">
+                                    <p class="reg">
+                                        ИДЁТ РЕГИСТРАЦИЯ
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="main-info-tour">
+                                <div class="date-time">
+                                    <div class="data-tour">
+                                        <p id="head-datetime">Дата</p>
+                                        <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                    </div>
+                                    <div class="time-tour">
+                                        <p id="head-datetime">Время</p>
+                                        <p><time datetime="T18:12:00">18:12:00</time></p>
+                                    </div>
+                                </div>
+                                <div class="mode-people">
+                                    <div class="mode">
+                                        <p id="mode-people">Формат:</p>
+                                        <h4 id="edit-mode-people">1v1</h4>
+                                    </div>
+                                    <div class="people2">
+                                        <p id="mode-people">Участники:</p>
+                                        <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="money2">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" id="bitcoin">
+                                    <path d="M6.82739 6.54749H10.3812C11.169 6.54749 11.808 7.25651 11.808 7.97428C11.808 8.76208 11.169 9.40107 10.3812 9.40107H6.82739V6.54749Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6.82739 9.39227H10.8889C11.7905 9.39227 12.5171 10.0313 12.5171 10.8191C12.5171 11.6069 11.7905 12.2459 10.8889 12.2459H6.82739V9.39227Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 6.54749H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 12.2372H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.1033 16.8793C13.293 16.8793 16.6895 13.4829 16.6895 9.29312C16.6895 5.10337 13.293 1.70691 9.1033 1.70691C4.91355 1.70691 1.51709 5.10337 1.51709 9.29312C1.51709 13.4829 4.91355 16.8793 9.1033 16.8793Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10"/>
+                                </svg>
+
+                                <p>10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="full-info-tour" class="full-info-tour-three">
+                        <div class="bottom-content-info-tour">
+                            <div class="info-tour-in-window">
+                                <p class="info-text">Инфо</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.7011 27.6782C22.5792 27.6782 28.2067 22.0507 28.2067 15.1727C28.2067 8.29462 22.5792 2.66711 15.7011 2.66711C8.82306 2.66711 3.19556 8.29462 3.19556 15.1727C3.19556 22.0507 8.82306 27.6782 15.7011 27.6782Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.7009 10.1705V16.4233" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.6936 20.175H15.7048" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="rules-tour-in-window">
+                                <p class="info-text">Правила</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28.3707 21.1006V6.00633C28.3707 4.50567 27.1452 3.39267 25.657 3.51773H25.582C22.9558 3.74283 18.9666 5.08092 16.7406 6.48155L16.528 6.61911C16.1653 6.84421 15.5651 6.84421 15.2024 6.61911L14.8898 6.43152C12.6638 5.04341 8.68699 3.71782 6.06082 3.50522C4.57266 3.38017 3.35962 4.50567 3.35962 5.99383V21.1006C3.35962 22.3011 4.33505 23.4266 5.53559 23.5767L5.89825 23.6267C8.61196 23.9893 12.8013 25.365 15.2024 26.678L15.2524 26.703C15.5901 26.8906 16.1278 26.8906 16.4529 26.703C18.854 25.3775 23.0559 23.9893 25.7821 23.6267L26.1948 23.5767C27.3953 23.4266 28.3707 22.3011 28.3707 21.1006Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.865 7.03162V25.79" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.5501 10.7833H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.488 14.535H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg> 
+                                    
+                            </div>
+                            <div class="map-tour-in-window">
+                                <p class="info-text">Карты</p>
+
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.88647 9.89553V22.0634C2.88647 24.4395 4.57473 25.4149 6.62564 24.2394L9.56445 22.5637C10.2022 22.201 11.2652 22.1635 11.928 22.5011L18.4934 25.7901C19.1562 26.1153 20.2192 26.0902 20.857 25.7276L26.2719 22.6262C26.9597 22.226 27.5349 21.2506 27.5349 20.4502V8.28231C27.5349 5.90626 25.8467 4.93082 23.7958 6.10635L20.857 7.78209C20.2192 8.14475 19.1562 8.18227 18.4934 7.84462L11.928 4.56816C11.2652 4.24302 10.2022 4.26803 9.56445 4.63069L4.14954 7.73207C3.44923 8.13225 2.88647 9.10768 2.88647 9.89553Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.7273 5.16846V21.4257" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.6936 8.44482V25.1773" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                            </div>
+                            <div class="team-tour-in-window">
+                                <p class="info-text">Команды</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.6966 9.12023C22.6216 9.10773 22.5341 9.10773 22.459 9.12023C20.7333 9.05771 19.3577 7.64458 19.3577 5.8938C19.3577 4.1055 20.7958 2.66736 22.5841 2.66736C24.3724 2.66736 25.8105 4.11801 25.8105 5.8938C25.798 7.64458 24.4224 9.05771 22.6966 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21.4093 18.2243C23.1226 18.512 25.011 18.2118 26.3365 17.3239C28.0998 16.1484 28.0998 14.2226 26.3365 13.047C24.9984 12.1591 23.0851 11.859 21.3718 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.65319 9.12023C7.72823 9.10773 7.81576 9.10773 7.8908 9.12023C9.61657 9.05771 10.9922 7.64458 10.9922 5.8938C10.9922 4.1055 9.55404 2.66736 7.76574 2.66736C5.97745 2.66736 4.53931 4.11801 4.53931 5.8938C4.55181 7.64458 5.92743 9.05771 7.65319 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.9413 18.2243C7.22804 18.512 5.3397 18.2118 4.01411 17.3239C2.25083 16.1484 2.25083 14.2226 4.01411 13.047C5.35221 12.1591 7.26556 11.859 8.97882 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.1937 18.4615C15.1187 18.449 15.0311 18.449 14.9561 18.4615C13.2303 18.399 11.8547 16.9859 11.8547 15.2351C11.8547 13.4468 13.2929 12.0087 15.0812 12.0087C16.8695 12.0087 18.3076 13.4593 18.3076 15.2351C18.2951 16.9859 16.9195 18.4115 15.1937 18.4615Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.5542 22.4008C9.79087 23.5763 9.79087 25.5022 11.5542 26.6777C13.555 28.0158 16.8315 28.0158 18.8324 26.6777C20.5957 25.5022 20.5957 23.5763 18.8324 22.4008C16.844 21.0752 13.555 21.0752 11.5542 22.4008Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="stream-tour-in-window">
+                                <p class="info-text">Трансляция</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.40428 2.66736H22.298C26.7499 2.66736 27.8629 3.78035 27.8629 8.21983V16.1359C27.8629 20.5878 26.7499 21.6883 22.3105 21.6883H8.40428C3.9648 21.7008 2.85181 20.5878 2.85181 16.1484V8.21983C2.85181 3.78035 3.9648 2.66736 8.40428 2.66736Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.3572 21.7008V27.6785" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.85181 16.4236H27.8629" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.72998 27.6785H20.985" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                            </div>
+                            <div class="prize-tour-in-window">
+                                <p class="info-text">Призовые</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.09048 2.74124C4.95336 0.878363 7.74096 0.166138 11.3341 0.166138H19.71C23.3032 0.166138 26.0908 0.878363 27.9536 2.74124C29.8165 4.60412 30.5287 7.39172 30.5287 10.9849V19.3607C30.5287 22.9539 29.8165 25.7415 27.9536 27.6044C26.0908 29.4673 23.3032 30.1795 19.71 30.1795H11.3341C7.74096 30.1795 4.95336 29.4673 3.09048 27.6044C1.22761 25.7415 0.515381 22.9539 0.515381 19.3607V10.9849C0.515381 7.39172 1.22761 4.60412 3.09048 2.74124ZM4.57114 4.22189C3.29308 5.49995 2.60934 7.59824 2.60934 10.9849V19.3607C2.60934 22.7474 3.29308 24.8457 4.57114 26.1237C5.84919 27.4018 7.94749 28.0855 11.3341 28.0855H19.71C23.0966 28.0855 25.1949 27.4018 26.473 26.1237C27.751 24.8457 28.4348 22.7474 28.4348 19.3607V10.9849C28.4348 7.59824 27.751 5.49995 26.473 4.22189C25.1949 2.94384 23.0966 2.26009 19.71 2.26009H11.3341C7.94749 2.26009 5.84919 2.94384 4.57114 4.22189Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.05676 5.70763C7.02034 4.74405 8.38066 4.354 9.93801 4.354H21.1058C22.6631 4.354 24.0235 4.74405 24.987 5.70763C25.9506 6.67122 26.3407 8.03154 26.3407 9.58889V20.7567C26.3407 22.314 25.9506 23.6743 24.987 24.6379C24.0235 25.6015 22.6631 25.9915 21.1058 25.9915H9.93801C8.38066 25.9915 7.02034 25.6015 6.05676 24.6379C5.09317 23.6743 4.70312 22.314 4.70312 20.7567V9.58889C4.70312 8.03154 5.09317 6.67122 6.05676 5.70763ZM7.53741 7.18828C7.10502 7.62067 6.79708 8.35431 6.79708 9.58889V20.7567C6.79708 21.9912 7.10502 22.7249 7.53741 23.1573C7.96979 23.5896 8.70343 23.8976 9.93801 23.8976H21.1058C22.3404 23.8976 23.074 23.5896 23.5064 23.1573C23.9388 22.7249 24.2467 21.9912 24.2467 20.7567V9.58889C24.2467 8.35431 23.9388 7.62067 23.5064 7.18828C23.074 6.7559 22.3404 6.44796 21.1058 6.44796H9.93801C8.70343 6.44796 7.96979 6.7559 7.53741 7.18828Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.70312 11.683C4.70312 11.1047 5.17187 10.636 5.7501 10.636H9.2121C11.7168 10.636 13.749 12.6682 13.749 15.1729C13.749 17.6776 11.7168 19.7098 9.2121 19.7098H5.7501C5.17187 19.7098 4.70312 19.241 4.70312 18.6628C4.70312 18.0846 5.17187 17.6158 5.7501 17.6158H9.2121C10.5603 17.6158 11.6551 16.5211 11.6551 15.1729C11.6551 13.8247 10.5603 12.7299 9.2121 12.7299H5.7501C5.17187 12.7299 4.70312 12.2612 4.70312 11.683Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 12.3673C20.0588 11.7891 20.5276 11.3203 21.1058 11.3203H25.2937C25.872 11.3203 26.3407 11.7891 26.3407 12.3673C26.3407 12.9455 25.872 13.4143 25.2937 13.4143H21.1058C20.5276 13.4143 20.0588 12.9455 20.0588 12.3673Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 17.9647C20.0588 17.3865 20.5276 16.9177 21.1058 16.9177H25.2937C25.872 16.9177 26.3407 17.3865 26.3407 17.9647C26.3407 18.5429 25.872 19.0117 25.2937 19.0117H21.1058C20.5276 19.0117 20.0588 18.5429 20.0588 17.9647Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.42554 15.1728C7.42554 14.4019 8.05053 13.7769 8.82151 13.7769H8.9611C9.73208 13.7769 10.3571 14.4019 10.3571 15.1728C10.3571 15.9438 9.73208 16.5688 8.9611 16.5688H8.82151C8.05053 16.5688 7.42554 15.9438 7.42554 15.1728Z" fill="#89919F"/>
+                                </svg>
+                                    
+                            </div>
+
+                            <button class="participate">
+                                Участвовать
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="tour-four"  onclick="showPopup(this)">
+                        <img class="game-image" id="game" src="/src/img/Group 14.svg" alt="game">
+                        <div class="full-width-tour">
+                            <div class="name-reg">
+                                <div class="name">
+                                    <h2 class="game">DOTA 2</h2>
+                                    <h3 class="tournament">CUMBERSOME CUP</h3>
+                                </div>
+                                <div class="reg">
+                                    <p class="reg">
+                                        ИДЁТ РЕГИСТРАЦИЯ
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="main-info-tour">
+                                <div class="date-time">
+                                    <div class="data-tour">
+                                        <p id="head-datetime">Дата</p>
+                                        <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                    </div>
+                                    <div class="time-tour">
+                                        <p id="head-datetime">Время</p>
+                                        <p><time datetime="T18:12:00">18:12:00</time></p>
+                                    </div>
+                                </div>
+                                <div class="mode-people">
+                                    <div class="mode">
+                                        <p id="mode-people">Формат:</p>
+                                        <h4 id="edit-mode-people">1v1</h4>
+                                    </div>
+                                    <div class="people2">
+                                        <p id="mode-people">Участники:</p>
+                                        <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="money2">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" id="bitcoin">
+                                    <path d="M6.82739 6.54749H10.3812C11.169 6.54749 11.808 7.25651 11.808 7.97428C11.808 8.76208 11.169 9.40107 10.3812 9.40107H6.82739V6.54749Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6.82739 9.39227H10.8889C11.7905 9.39227 12.5171 10.0313 12.5171 10.8191C12.5171 11.6069 11.7905 12.2459 10.8889 12.2459H6.82739V9.39227Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 6.54749H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 12.2372H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.1033 16.8793C13.293 16.8793 16.6895 13.4829 16.6895 9.29312C16.6895 5.10337 13.293 1.70691 9.1033 1.70691C4.91355 1.70691 1.51709 5.10337 1.51709 9.29312C1.51709 13.4829 4.91355 16.8793 9.1033 16.8793Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10"/>
+                                </svg>
+
+                                <p>10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="full-info-tour" class="full-info-tour-four">
+                        <div class="bottom-content-info-tour">
+                            <div class="info-tour-in-window">
+                                <p class="info-text">Инфо</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.7011 27.6782C22.5792 27.6782 28.2067 22.0507 28.2067 15.1727C28.2067 8.29462 22.5792 2.66711 15.7011 2.66711C8.82306 2.66711 3.19556 8.29462 3.19556 15.1727C3.19556 22.0507 8.82306 27.6782 15.7011 27.6782Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.7009 10.1705V16.4233" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.6936 20.175H15.7048" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="rules-tour-in-window">
+                                <p class="info-text">Правила</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28.3707 21.1006V6.00633C28.3707 4.50567 27.1452 3.39267 25.657 3.51773H25.582C22.9558 3.74283 18.9666 5.08092 16.7406 6.48155L16.528 6.61911C16.1653 6.84421 15.5651 6.84421 15.2024 6.61911L14.8898 6.43152C12.6638 5.04341 8.68699 3.71782 6.06082 3.50522C4.57266 3.38017 3.35962 4.50567 3.35962 5.99383V21.1006C3.35962 22.3011 4.33505 23.4266 5.53559 23.5767L5.89825 23.6267C8.61196 23.9893 12.8013 25.365 15.2024 26.678L15.2524 26.703C15.5901 26.8906 16.1278 26.8906 16.4529 26.703C18.854 25.3775 23.0559 23.9893 25.7821 23.6267L26.1948 23.5767C27.3953 23.4266 28.3707 22.3011 28.3707 21.1006Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.865 7.03162V25.79" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.5501 10.7833H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.488 14.535H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg> 
+                                    
+                            </div>
+                            <div class="map-tour-in-window">
+                                <p class="info-text">Карты</p>
+
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.88647 9.89553V22.0634C2.88647 24.4395 4.57473 25.4149 6.62564 24.2394L9.56445 22.5637C10.2022 22.201 11.2652 22.1635 11.928 22.5011L18.4934 25.7901C19.1562 26.1153 20.2192 26.0902 20.857 25.7276L26.2719 22.6262C26.9597 22.226 27.5349 21.2506 27.5349 20.4502V8.28231C27.5349 5.90626 25.8467 4.93082 23.7958 6.10635L20.857 7.78209C20.2192 8.14475 19.1562 8.18227 18.4934 7.84462L11.928 4.56816C11.2652 4.24302 10.2022 4.26803 9.56445 4.63069L4.14954 7.73207C3.44923 8.13225 2.88647 9.10768 2.88647 9.89553Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.7273 5.16846V21.4257" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.6936 8.44482V25.1773" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                            </div>
+                            <div class="team-tour-in-window">
+                                <p class="info-text">Команды</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.6966 9.12023C22.6216 9.10773 22.5341 9.10773 22.459 9.12023C20.7333 9.05771 19.3577 7.64458 19.3577 5.8938C19.3577 4.1055 20.7958 2.66736 22.5841 2.66736C24.3724 2.66736 25.8105 4.11801 25.8105 5.8938C25.798 7.64458 24.4224 9.05771 22.6966 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21.4093 18.2243C23.1226 18.512 25.011 18.2118 26.3365 17.3239C28.0998 16.1484 28.0998 14.2226 26.3365 13.047C24.9984 12.1591 23.0851 11.859 21.3718 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.65319 9.12023C7.72823 9.10773 7.81576 9.10773 7.8908 9.12023C9.61657 9.05771 10.9922 7.64458 10.9922 5.8938C10.9922 4.1055 9.55404 2.66736 7.76574 2.66736C5.97745 2.66736 4.53931 4.11801 4.53931 5.8938C4.55181 7.64458 5.92743 9.05771 7.65319 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.9413 18.2243C7.22804 18.512 5.3397 18.2118 4.01411 17.3239C2.25083 16.1484 2.25083 14.2226 4.01411 13.047C5.35221 12.1591 7.26556 11.859 8.97882 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.1937 18.4615C15.1187 18.449 15.0311 18.449 14.9561 18.4615C13.2303 18.399 11.8547 16.9859 11.8547 15.2351C11.8547 13.4468 13.2929 12.0087 15.0812 12.0087C16.8695 12.0087 18.3076 13.4593 18.3076 15.2351C18.2951 16.9859 16.9195 18.4115 15.1937 18.4615Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.5542 22.4008C9.79087 23.5763 9.79087 25.5022 11.5542 26.6777C13.555 28.0158 16.8315 28.0158 18.8324 26.6777C20.5957 25.5022 20.5957 23.5763 18.8324 22.4008C16.844 21.0752 13.555 21.0752 11.5542 22.4008Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="stream-tour-in-window">
+                                <p class="info-text">Трансляция</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.40428 2.66736H22.298C26.7499 2.66736 27.8629 3.78035 27.8629 8.21983V16.1359C27.8629 20.5878 26.7499 21.6883 22.3105 21.6883H8.40428C3.9648 21.7008 2.85181 20.5878 2.85181 16.1484V8.21983C2.85181 3.78035 3.9648 2.66736 8.40428 2.66736Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.3572 21.7008V27.6785" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.85181 16.4236H27.8629" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.72998 27.6785H20.985" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                            </div>
+                            <div class="prize-tour-in-window">
+                                <p class="info-text">Призовые</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.09048 2.74124C4.95336 0.878363 7.74096 0.166138 11.3341 0.166138H19.71C23.3032 0.166138 26.0908 0.878363 27.9536 2.74124C29.8165 4.60412 30.5287 7.39172 30.5287 10.9849V19.3607C30.5287 22.9539 29.8165 25.7415 27.9536 27.6044C26.0908 29.4673 23.3032 30.1795 19.71 30.1795H11.3341C7.74096 30.1795 4.95336 29.4673 3.09048 27.6044C1.22761 25.7415 0.515381 22.9539 0.515381 19.3607V10.9849C0.515381 7.39172 1.22761 4.60412 3.09048 2.74124ZM4.57114 4.22189C3.29308 5.49995 2.60934 7.59824 2.60934 10.9849V19.3607C2.60934 22.7474 3.29308 24.8457 4.57114 26.1237C5.84919 27.4018 7.94749 28.0855 11.3341 28.0855H19.71C23.0966 28.0855 25.1949 27.4018 26.473 26.1237C27.751 24.8457 28.4348 22.7474 28.4348 19.3607V10.9849C28.4348 7.59824 27.751 5.49995 26.473 4.22189C25.1949 2.94384 23.0966 2.26009 19.71 2.26009H11.3341C7.94749 2.26009 5.84919 2.94384 4.57114 4.22189Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.05676 5.70763C7.02034 4.74405 8.38066 4.354 9.93801 4.354H21.1058C22.6631 4.354 24.0235 4.74405 24.987 5.70763C25.9506 6.67122 26.3407 8.03154 26.3407 9.58889V20.7567C26.3407 22.314 25.9506 23.6743 24.987 24.6379C24.0235 25.6015 22.6631 25.9915 21.1058 25.9915H9.93801C8.38066 25.9915 7.02034 25.6015 6.05676 24.6379C5.09317 23.6743 4.70312 22.314 4.70312 20.7567V9.58889C4.70312 8.03154 5.09317 6.67122 6.05676 5.70763ZM7.53741 7.18828C7.10502 7.62067 6.79708 8.35431 6.79708 9.58889V20.7567C6.79708 21.9912 7.10502 22.7249 7.53741 23.1573C7.96979 23.5896 8.70343 23.8976 9.93801 23.8976H21.1058C22.3404 23.8976 23.074 23.5896 23.5064 23.1573C23.9388 22.7249 24.2467 21.9912 24.2467 20.7567V9.58889C24.2467 8.35431 23.9388 7.62067 23.5064 7.18828C23.074 6.7559 22.3404 6.44796 21.1058 6.44796H9.93801C8.70343 6.44796 7.96979 6.7559 7.53741 7.18828Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.70312 11.683C4.70312 11.1047 5.17187 10.636 5.7501 10.636H9.2121C11.7168 10.636 13.749 12.6682 13.749 15.1729C13.749 17.6776 11.7168 19.7098 9.2121 19.7098H5.7501C5.17187 19.7098 4.70312 19.241 4.70312 18.6628C4.70312 18.0846 5.17187 17.6158 5.7501 17.6158H9.2121C10.5603 17.6158 11.6551 16.5211 11.6551 15.1729C11.6551 13.8247 10.5603 12.7299 9.2121 12.7299H5.7501C5.17187 12.7299 4.70312 12.2612 4.70312 11.683Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 12.3673C20.0588 11.7891 20.5276 11.3203 21.1058 11.3203H25.2937C25.872 11.3203 26.3407 11.7891 26.3407 12.3673C26.3407 12.9455 25.872 13.4143 25.2937 13.4143H21.1058C20.5276 13.4143 20.0588 12.9455 20.0588 12.3673Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 17.9647C20.0588 17.3865 20.5276 16.9177 21.1058 16.9177H25.2937C25.872 16.9177 26.3407 17.3865 26.3407 17.9647C26.3407 18.5429 25.872 19.0117 25.2937 19.0117H21.1058C20.5276 19.0117 20.0588 18.5429 20.0588 17.9647Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.42554 15.1728C7.42554 14.4019 8.05053 13.7769 8.82151 13.7769H8.9611C9.73208 13.7769 10.3571 14.4019 10.3571 15.1728C10.3571 15.9438 9.73208 16.5688 8.9611 16.5688H8.82151C8.05053 16.5688 7.42554 15.9438 7.42554 15.1728Z" fill="#89919F"/>
+                                </svg>
+                                    
+                            </div>
+
+                            <button class="participate">
+                                Участвовать
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="tour-five"  onclick="showPopup(this)">
+                        <img class="game-image" id="game" src="/src/img/Group 14.svg" alt="game">
+                        <div class="full-width-tour">
+                            <div class="name-reg">
+                                <div class="name">
+                                    <h2 class="game">DOTA 2</h2>
+                                    <h3 class="tournament">CUMBERSOME CUP</h3>
+                                </div>
+                                <div class="reg">
+                                    <p class="reg">
+                                        ИДЁТ РЕГИСТРАЦИЯ
+                                    </p>
+                                </div>
+                            </div>
+                            <div c  lass="main-info-tour">
+                                <div class="date-time">
+                                    <div class="data-tour">
+                                        <p id="head-datetime">Дата</p>
+                                        <p><time datetime="2025-02-31">31.02.2025</time></p>
+                                    </div>
+                                    <div class="time-tour">
+                                        <p id="head-datetime">Время</p>
+                                        <p><time datetime="T18:12:00">18:12:00</time></p>
+                                    </div>
+                                </div>
+                                <div class="mode-people">
+                                    <div class="mode">
+                                        <p id="mode-people">Формат:</p>
+                                        <h4 id="edit-mode-people">1v1</h4>
+                                    </div>
+                                    <div class="people2">
+                                        <p id="mode-people">Участники:</p>
+                                        <p id="edit-mode-people">312/<p class="max-player">512</p></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="money2">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" id="bitcoin">
+                                    <path d="M6.82739 6.54749H10.3812C11.169 6.54749 11.808 7.25651 11.808 7.97428C11.808 8.76208 11.169 9.40107 10.3812 9.40107H6.82739V6.54749Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6.82739 9.39227H10.8889C11.7905 9.39227 12.5171 10.0313 12.5171 10.8191C12.5171 11.6069 11.7905 12.2459 10.8889 12.2459H6.82739V9.39227Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 12.2372V13.664" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.31348 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.53687 5.12067V6.54746" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 6.54749H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.17515 12.2372H5.68921" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.1033 16.8793C13.293 16.8793 16.6895 13.4829 16.6895 9.29312C16.6895 5.10337 13.293 1.70691 9.1033 1.70691C4.91355 1.70691 1.51709 5.10337 1.51709 9.29312C1.51709 13.4829 4.91355 16.8793 9.1033 16.8793Z" stroke="#FF8000" stroke-width="1.5" stroke-miterlimit="10"/>
+                                </svg>
+
+                                <p>10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="full-info-tour" class="full-info-tour-five">
+                        <div class="bottom-content-info-tour">
+                            <div class="info-tour-in-window">
+                                <p class="info-text">Инфо</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.7011 27.6782C22.5792 27.6782 28.2067 22.0507 28.2067 15.1727C28.2067 8.29462 22.5792 2.66711 15.7011 2.66711C8.82306 2.66711 3.19556 8.29462 3.19556 15.1727C3.19556 22.0507 8.82306 27.6782 15.7011 27.6782Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.7009 10.1705V16.4233" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.6936 20.175H15.7048" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="rules-tour-in-window">
+                                <p class="info-text">Правила</p>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28.3707 21.1006V6.00633C28.3707 4.50567 27.1452 3.39267 25.657 3.51773H25.582C22.9558 3.74283 18.9666 5.08092 16.7406 6.48155L16.528 6.61911C16.1653 6.84421 15.5651 6.84421 15.2024 6.61911L14.8898 6.43152C12.6638 5.04341 8.68699 3.71782 6.06082 3.50522C4.57266 3.38017 3.35962 4.50567 3.35962 5.99383V21.1006C3.35962 22.3011 4.33505 23.4266 5.53559 23.5767L5.89825 23.6267C8.61196 23.9893 12.8013 25.365 15.2024 26.678L15.2524 26.703C15.5901 26.8906 16.1278 26.8906 16.4529 26.703C18.854 25.3775 23.0559 23.9893 25.7821 23.6267L26.1948 23.5767C27.3953 23.4266 28.3707 22.3011 28.3707 21.1006Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.865 7.03162V25.79" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.5501 10.7833H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.488 14.535H7.73633" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg> 
+                                    
+                            </div>
+                            <div class="map-tour-in-window">
+                                <p class="info-text">Карты</p>
+
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.88647 9.89553V22.0634C2.88647 24.4395 4.57473 25.4149 6.62564 24.2394L9.56445 22.5637C10.2022 22.201 11.2652 22.1635 11.928 22.5011L18.4934 25.7901C19.1562 26.1153 20.2192 26.0902 20.857 25.7276L26.2719 22.6262C26.9597 22.226 27.5349 21.2506 27.5349 20.4502V8.28231C27.5349 5.90626 25.8467 4.93082 23.7958 6.10635L20.857 7.78209C20.2192 8.14475 19.1562 8.18227 18.4934 7.84462L11.928 4.56816C11.2652 4.24302 10.2022 4.26803 9.56445 4.63069L4.14954 7.73207C3.44923 8.13225 2.88647 9.10768 2.88647 9.89553Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.7273 5.16846V21.4257" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.6936 8.44482V25.1773" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                            </div>
+                            <div class="team-tour-in-window">
+                                <p class="info-text">Команды</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.6966 9.12023C22.6216 9.10773 22.5341 9.10773 22.459 9.12023C20.7333 9.05771 19.3577 7.64458 19.3577 5.8938C19.3577 4.1055 20.7958 2.66736 22.5841 2.66736C24.3724 2.66736 25.8105 4.11801 25.8105 5.8938C25.798 7.64458 24.4224 9.05771 22.6966 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21.4093 18.2243C23.1226 18.512 25.011 18.2118 26.3365 17.3239C28.0998 16.1484 28.0998 14.2226 26.3365 13.047C24.9984 12.1591 23.0851 11.859 21.3718 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.65319 9.12023C7.72823 9.10773 7.81576 9.10773 7.8908 9.12023C9.61657 9.05771 10.9922 7.64458 10.9922 5.8938C10.9922 4.1055 9.55404 2.66736 7.76574 2.66736C5.97745 2.66736 4.53931 4.11801 4.53931 5.8938C4.55181 7.64458 5.92743 9.05771 7.65319 9.12023Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.9413 18.2243C7.22804 18.512 5.3397 18.2118 4.01411 17.3239C2.25083 16.1484 2.25083 14.2226 4.01411 13.047C5.35221 12.1591 7.26556 11.859 8.97882 12.1591" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.1937 18.4615C15.1187 18.449 15.0311 18.449 14.9561 18.4615C13.2303 18.399 11.8547 16.9859 11.8547 15.2351C11.8547 13.4468 13.2929 12.0087 15.0812 12.0087C16.8695 12.0087 18.3076 13.4593 18.3076 15.2351C18.2951 16.9859 16.9195 18.4115 15.1937 18.4615Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.5542 22.4008C9.79087 23.5763 9.79087 25.5022 11.5542 26.6777C13.555 28.0158 16.8315 28.0158 18.8324 26.6777C20.5957 25.5022 20.5957 23.5763 18.8324 22.4008C16.844 21.0752 13.555 21.0752 11.5542 22.4008Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="stream-tour-in-window">
+                                <p class="info-text">Трансляция</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.40428 2.66736H22.298C26.7499 2.66736 27.8629 3.78035 27.8629 8.21983V16.1359C27.8629 20.5878 26.7499 21.6883 22.3105 21.6883H8.40428C3.9648 21.7008 2.85181 20.5878 2.85181 16.1484V8.21983C2.85181 3.78035 3.9648 2.66736 8.40428 2.66736Z" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.3572 21.7008V27.6785" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.85181 16.4236H27.8629" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.72998 27.6785H20.985" stroke="#89919F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                            </div>
+                            <div class="prize-tour-in-window">
+                                <p class="info-text">Призовые</p>
+
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.09048 2.74124C4.95336 0.878363 7.74096 0.166138 11.3341 0.166138H19.71C23.3032 0.166138 26.0908 0.878363 27.9536 2.74124C29.8165 4.60412 30.5287 7.39172 30.5287 10.9849V19.3607C30.5287 22.9539 29.8165 25.7415 27.9536 27.6044C26.0908 29.4673 23.3032 30.1795 19.71 30.1795H11.3341C7.74096 30.1795 4.95336 29.4673 3.09048 27.6044C1.22761 25.7415 0.515381 22.9539 0.515381 19.3607V10.9849C0.515381 7.39172 1.22761 4.60412 3.09048 2.74124ZM4.57114 4.22189C3.29308 5.49995 2.60934 7.59824 2.60934 10.9849V19.3607C2.60934 22.7474 3.29308 24.8457 4.57114 26.1237C5.84919 27.4018 7.94749 28.0855 11.3341 28.0855H19.71C23.0966 28.0855 25.1949 27.4018 26.473 26.1237C27.751 24.8457 28.4348 22.7474 28.4348 19.3607V10.9849C28.4348 7.59824 27.751 5.49995 26.473 4.22189C25.1949 2.94384 23.0966 2.26009 19.71 2.26009H11.3341C7.94749 2.26009 5.84919 2.94384 4.57114 4.22189Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.05676 5.70763C7.02034 4.74405 8.38066 4.354 9.93801 4.354H21.1058C22.6631 4.354 24.0235 4.74405 24.987 5.70763C25.9506 6.67122 26.3407 8.03154 26.3407 9.58889V20.7567C26.3407 22.314 25.9506 23.6743 24.987 24.6379C24.0235 25.6015 22.6631 25.9915 21.1058 25.9915H9.93801C8.38066 25.9915 7.02034 25.6015 6.05676 24.6379C5.09317 23.6743 4.70312 22.314 4.70312 20.7567V9.58889C4.70312 8.03154 5.09317 6.67122 6.05676 5.70763ZM7.53741 7.18828C7.10502 7.62067 6.79708 8.35431 6.79708 9.58889V20.7567C6.79708 21.9912 7.10502 22.7249 7.53741 23.1573C7.96979 23.5896 8.70343 23.8976 9.93801 23.8976H21.1058C22.3404 23.8976 23.074 23.5896 23.5064 23.1573C23.9388 22.7249 24.2467 21.9912 24.2467 20.7567V9.58889C24.2467 8.35431 23.9388 7.62067 23.5064 7.18828C23.074 6.7559 22.3404 6.44796 21.1058 6.44796H9.93801C8.70343 6.44796 7.96979 6.7559 7.53741 7.18828Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.70312 11.683C4.70312 11.1047 5.17187 10.636 5.7501 10.636H9.2121C11.7168 10.636 13.749 12.6682 13.749 15.1729C13.749 17.6776 11.7168 19.7098 9.2121 19.7098H5.7501C5.17187 19.7098 4.70312 19.241 4.70312 18.6628C4.70312 18.0846 5.17187 17.6158 5.7501 17.6158H9.2121C10.5603 17.6158 11.6551 16.5211 11.6551 15.1729C11.6551 13.8247 10.5603 12.7299 9.2121 12.7299H5.7501C5.17187 12.7299 4.70312 12.2612 4.70312 11.683Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 12.3673C20.0588 11.7891 20.5276 11.3203 21.1058 11.3203H25.2937C25.872 11.3203 26.3407 11.7891 26.3407 12.3673C26.3407 12.9455 25.872 13.4143 25.2937 13.4143H21.1058C20.5276 13.4143 20.0588 12.9455 20.0588 12.3673Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0588 17.9647C20.0588 17.3865 20.5276 16.9177 21.1058 16.9177H25.2937C25.872 16.9177 26.3407 17.3865 26.3407 17.9647C26.3407 18.5429 25.872 19.0117 25.2937 19.0117H21.1058C20.5276 19.0117 20.0588 18.5429 20.0588 17.9647Z" fill="#89919F"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.42554 15.1728C7.42554 14.4019 8.05053 13.7769 8.82151 13.7769H8.9611C9.73208 13.7769 10.3571 14.4019 10.3571 15.1728C10.3571 15.9438 9.73208 16.5688 8.9611 16.5688H8.82151C8.05053 16.5688 7.42554 15.9438 7.42554 15.1728Z" fill="#89919F"/>
+                                </svg>
+                                    
+                            </div>
+
+                            <button class="participate">
+                                Участвовать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
                 
                 <div class="more-event">
                     <h4 class="text-more-event">Больше событий</h4>
@@ -319,7 +828,9 @@
 
                 <button class="go-play">
                     <img src="/src/icons/gamepad.svg" alt="" class="gamepad">
-                    <p class="join">Присоединиться</p>
+                    <div class="join-2">
+                        <p class="join">Играть</p>
+                    </div>
                 </button>
 
                 
@@ -336,7 +847,7 @@
                     <div class="news-text">
                         <h4 class="head-news">Рады объявить о новом сотрудничестве</h4>
                         <p class="description">Сегодня мы рады вам сообщить, что наш сайт принял новое партнёрское соглашение.</p>
-                        <a href="#">
+                        
                             <div class="learn-more">
                                 <p>Узнать больше</p>
                                 <img src="/src/icons/Polygon.svg" alt="" id="pol">
@@ -387,7 +898,7 @@
                         <div class="line-task">
                             <hr color="#0B4EA1" size="0.5">
                         </div>
-    
+
                         <div class="task-four">
                             <div class="condition-four" id="condition">
                                 <img src="/src/icons/Ellipse.svg" alt="" class="point">
@@ -420,9 +931,9 @@
                         <div class="now-play">
                             <p class="quantity">966<p class="player">играют</p></p>
                         </div>
-                        <a href="#" id="white-link"><div class="act-tour" id="tour-cup-history">Активные турниры</div></a>
-                        <a href="#" id="white-link"><div class="system-cup" id="tour-cup-history">Система призов</div></a>
-                        <a href="#" id="white-link"><div class="history" id="tour-cup-history">История</div></a>
+                        <a href="#" id="white-link">Активные турниры</a>
+                        <a href="#" id="white-link">Система призов</a>
+                        <a href="#" id="white-link">История</a>
                         
                         
                     </div>
@@ -430,15 +941,15 @@
                         <div class="quantity-online">
                             <p class="quantity2">2848<p class="online">онлайн</p></p>
                         </div>
-                        <a href="#" id="white-link"><div class="questions" id="ques-supp-comm">Вопросы</div></a>
-                        <a href="#" id="white-link"><div class="support" id="ques-supp-comm">Поддержка</div></a>
-                        <a href="#" id="white-link"><div class="comments" id="ques-supp-comm">Отзывы</div></a>
+                        <a href="#" id="white-link">Вопросы</a>
+                        <a href="#" id="white-link">Поддержка</a>
+                        <a href="#" id="white-link">Отзывы</a>
                     </div>
                 </div>
                 <div class="footer-social-media">
-                    <a href="#"><img src="/src/icons/VK-footer.svg" alt="" class="VK" id="social-media"></a>
-                    <a href="#"><img src="/src/icons/Steam-footer.svg" alt="" class="Steam-img" id="social-media"></a>
-                    <a href="#"><img src="/src/icons/TG-footer.svg" alt="" class="Telegram" id="social-media"></a>
+                    <img src="/src/icons/VK-footer.svg" alt="" class="VK" id="social-media"></a>
+                    <img src="/src/icons/Steam-footer.svg" alt="" class="Steam-img" id="social-media"></a>
+                    <img src="/src/icons/TG-footer.svg" alt="" class="Telegram" id="social-media"></a>
                 </div>
                 
             </div>

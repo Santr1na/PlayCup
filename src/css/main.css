@@ -1,12 +1,4 @@
-@font-face {
-    font-family: 'Reddit Sans SemiBold'; 
-    src: local('Reddit Sans SemiBold'), url(/src/fonts/RedditSans/RedditSans-SemiBold.ttf); 
-}
-
-@font-face {
-    font-family: 'Inter Black'; 
-    src: local('Inter Black'), url(/src/fonts/Inter/static/Inter_18pt-Black.ttf); 
-}
+@import url(/src/css/var.css);
 
 @font-face {
     font-family: 'Inter SemiBold'; 
@@ -34,9 +26,68 @@
     
 }
 
+
+/* Анимация */
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+/* Анимация для hover-эффекта */
+.hover-effect {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Плавное появление */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Плавное исчезновение */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+:root{
+    --font-regular: 'Inter Regular', sans-serif;
+    --font-semibold: 'Inter SemiBold', sans-serif;
+    --font-bold: 'Inter Bold', sans-serif;
+    --font-extrabold: 'Inter ExtraBold', sans-serif;
+
+    --font-size-pony: 12px;
+    --font-size-small: 14px;
+    --font-size-main: 16px;
+    --font-size-medium: 18px;
+    --font-size-big: 20px;
+    --font-size-large: 24px;
+    --font-size-huge: 28px;
+
+    --border-radius-main: 12px;
+}
+
 html {
     scrollbar-color: #464663 #00000000;
-    scrollbar-width: thin;
+    scrollbar-width:thin;    
+    overflow-x: hidden;
 }
 
 body {
@@ -60,7 +111,7 @@ a {
     width: 100%;
     border-radius: 100%;
     background: rgb(19, 94, 255);
-    box-shadow: 10px 10px 300px 250px rgba(19, 94, 255, 0.35);
+    box-shadow: 10px 10px 300px 250px rgba(19, 94, 255, 0.25);
     margin-left: auto;
 }
 
@@ -68,20 +119,25 @@ a {
 header {
     position: relative;
     z-index: 2;
-    border-bottom: 1px solid #464663;
     background: #0D0E12;
     font-size: 12px;
     width: 100%;
-    height: 52px;
+    height: 74px;
+    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
+    font-size: var(--font-size-medium);
 }
 
 /* LOGO */
 .logo {
+    width: 200px;
     margin-left: 64px;
+}
+
+.logo img{
+    width: 100%;
 }
 
 /* Навигация левая часть */
@@ -92,35 +148,35 @@ header {
     align-items: center;
 }
 
+.log_text .navigation-main{
+    display: flex;
+}
+
 .text {
     margin-left: 50px;
+    user-select: none;    
 }
 
 .text ul {
     list-style: none;
-    display: flex;
 }
 
 #main_nav {
-    margin-right: 40px;
-    display: flex;
+    padding-right: 40px;
     min-width: 100px;
     align-items: center;
 }
 
 .header-hover-shadow{
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-semibold);
 }
 
 .header-hover-shadow:hover{
-    text-shadow: 0px 0px 4px #fff;
-}
-#pol {
-    padding-left: 4px;
+    text-shadow: 0px 0px 2.5px #fff;
 }
 
-.text ul li a {
-    color: white;
+#pol {
+    padding-left: 4px;
 }
 
 /* Навигация правая часть */
@@ -145,7 +201,7 @@ header {
 
 
 #navig {
-    height: 24px;
+    height: 32px;
     padding-left: 20px;
 }
 
@@ -154,35 +210,35 @@ header {
     display: flex;
     align-items: center;
     list-style: none;
-    padding-right: 30px;
-    height: 100%;
+    padding: 0px 30px;
+    height: 52px;
 }
 
 .btn_profile button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0px 30px;
+    padding: 0px 50px;
     background: url('/src/icons/back_gold.svg') no-repeat top left;
     background-size: cover;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--border-radius-main);
     cursor: pointer;
     width: 100%;
-    height: 44  px;
+    height: 48px;
 }
 
 .btn_profile button h4 {
-    font-size: 14px;
-    font-family: "Reddit Sans SemiBold";
+    font-size: var(--font-size-small);
+    font-family: var(--font-semibold);
     margin-right: 4px;
 }
 
 .btn_profile button h5 {
     margin-left: 10px;
-    font-size: 12px;
-    font-family: 'Reddit Sans SemiBold';
+    font-size: var(--font-size-pony);
+    font-family: var(--font-semibold);
     align-content: center;
     text-shadow: 0px -1px 12px #fff;
 }
@@ -191,8 +247,8 @@ header {
     color: #77FF00;
     font-size: 10px;
     padding: 6px 0;
-    font-family: 'Reddit Sans SemiBold';
-    text-shadow: 0px 0px 4px #77FF00;
+    font-family: var(--font-semibold);
+    text-shadow: 0px 0px 8px #77FF00;
 }
 
 #back_prof {
@@ -229,7 +285,7 @@ header {
     justify-content: center;
     min-width: 20px;
     height: 20px;
-    margin-right: 20px;
+    padding-right: 20px;
 }
 
 
@@ -257,10 +313,18 @@ svg.bg {
 }
 
 .hello-window {
-    width: fit-content;
-    height: max-content;
+    width: 1500px;
+    padding-top: 80px;
     position: relative;
     display: flex;
+}
+
+.hello-window-info-text {
+    background-image: url(/src/img/back-hello-window.svg);
+    float: left;
+    width: 1500px;
+    height: 460px;
+    padding: 0px 50px;
 }
 
 .back-hello-window {
@@ -273,13 +337,13 @@ svg.bg {
 }
 
 .lozung {
-    position: relative;
-    width: 100%;
+    width: max-content;
     text-align: start;
-    margin-top: 120px;
     color: #fff;
-    font-family: "Inter Black";
+    font-family: var(--font-extrabold);
+    font-weight: 900;
     font-size: 50px;
+    padding-top: 48px;
     text-shadow: 0px 0px 40px rgba(255, 255, 255, 0.5);
 }
 
@@ -287,19 +351,12 @@ svg.bg {
     position: relative;
     width: 45%;
     color: #fff;
-    font-family: "Inter SemiBold";
-    font-size: 20px;
+    font-family: var(--font-semibold);
+    font-size: var(--font-size-big);
     text-align: start;
     vertical-align: top;
-    margin-top: 24px;
+    padding-top: 24px;
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
-}
-
-.info-text {
-    position: absolute;
-    float: left;
-    margin-left: 50px;
-    height: 100%;
 }
 
 .enter-steam {
@@ -311,8 +368,7 @@ svg.bg {
     display: flex;
     background: linear-gradient(90deg, rgba(9,84,177,1) 0%, rgba(61,85,116,1) 100%);
     border-style: none;
-    border-radius: 12px;
-    margin-top: 40px;
+    border-radius: var(--border-radius-main);
     cursor: pointer;
 }
 
@@ -327,13 +383,14 @@ svg.bg {
 }
 
 .come-in-Steam {
-    font-size: 20px;
-    font-family: "Inter ExtraBold";
+    font-size: var(--font-size-big);
+    font-family: var(--font-extrabold);
     color: #fff;
     margin-left: 24px;
 }
 
 .center-steam-enter {
+    padding-top: 50px;
     display: flex;
     align-content: center;
 }
@@ -344,13 +401,13 @@ svg.bg {
     bottom: 0;
     justify-content: space-between;
     width: 100%;
-    margin-top: 50px;
+    padding-top: 50px;
 }
 
 #information {
     color: #fff;
-    font-family: "Inter ExtraBold";
-    font-size: 28px;
+    font-family: var(--font-extrabold);
+    font-size: var(--font-size-huge);
 }
 
 .line {
@@ -363,10 +420,16 @@ svg.bg {
 h1{
     color: #fff;
     font-size: 44px;
-    font-family: "Inter ExtraBold";
-    margin-top: 50px;
-    margin-bottom: 50px;
+    font-family: var(--font-extrabold);
+    padding-top: 50px;
+    padding-bottom: 50px;
     width: max-content;
+}
+
+.tour-cool-padding{
+    display: grid;
+    grid-gap: 30px;
+    position: relative;
 }
 
 .text-tournaments{
@@ -379,55 +442,77 @@ h1{
     width: fit-content;
 }
 
-#tour{
+.tour-one, .tour-two, .tour-three, .tour-four, .tour-five{
     width: 1000px;
-    height: 156px;
-    margin-top: 30px;
+    height: fit-content;
     display: flex;
-    background-image: linear-gradient(to right, rgba(46, 81, 113, 0.37) , rgba(32, 76, 169, 0.09));
-    border-radius: 12px;
+    border: none;
+    background-image: linear-gradient(to right, #162740, #0E1420);
+    border-radius: 14px;
     z-index: 3;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tour-one:hover img, .tour-two:hover img, .tour-three:hover img, .tour-four:hover img, .tour-five:hover img{
+    transform: scale(1.03);
+    
+}
+
+.full-width-tour{
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding-right: 50px;
+    
+}
+
+.game-image{
+    scale: 1.02;
+    transition: 0.15s ease-in-out;
+
 }
 
 #game{
-    width: 400px;
-    height: 156px;
+    width: 100%;
+    height: 100%;
 }
 
 .name-reg{
     margin-left: 20px;
-    height: 100%;
-    width: 250px;
+    width: max-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .name{
-    margin-top: 22px;
     color: #fff;
+    align-items: center;
 }
 
 .name h2{
-    font-size: 24px;
-    font-family: "Inter ExtraBold";
+    font-size: var(--font-size-large);
+    font-family: var(--font-extrabold);
 }
 
 .name h3{
-    font-size: 16px;
-    font-family: "Inter Bold";
+    font-size:  var(--font-size-main);
+    font-family: var(--font-bold);
     margin-top: 8px;
 }
 
 .reg{
-    margin-bottom: 14px;
+    padding-top: 40px;
     color: #fff;
-    font-family: "Inter ExtraBold";
+    font-family: var(--font-extrabold);
     width: max-content;
 }
 
 .reg p{
-    font-size: 12px;
+    font-size: var(--font-size-pony);
     padding: 4px 8px;
     background: #5E01FF;
     border-radius: 3px;
@@ -435,7 +520,6 @@ h1{
 
 .date-time{
     display: flex;
-    padding-top: 22px;
 }
 
 .data-tour{
@@ -443,9 +527,9 @@ h1{
     padding-right: 30px;
 }
 
-.data-tour p time{
+.data-tour p time, .time-tour p time{
     color: #fff;
-    font-family: "Inter SemiBold";
+    font-family: var(--font-regular);
     font-weight: 200;
 }
 
@@ -453,18 +537,12 @@ h1{
     display: block;
 }
 
-.time-tour p time{
-    color: #fff;
-    font-family: "Inter SemiBold";
-    font-weight: 200;
-}
-
 #head-datetime{
     color: #8E8E8E;
     text-align: center;
     margin-bottom: 8px;
-    font-family: "Inter Regular";
-    font-size: 12px;
+    font-family: var(--font-regular);
+    font-size: var(--font-size-small);
     font-weight: 400;
 }
 
@@ -478,32 +556,31 @@ h1{
     padding-top: 12px;
 }
 
+#mode-people, .max-player, #edit-mode-people{
+    font-size: var(--font-size-main);
+    font-family: var(--font-regular);
+}
+
 #mode-people{
     color: #8E8E8E;
-    font-size: 16px;
-    font-family: "Inter Regular";
     font-weight: 200;
 }
 
 .max-player{
     color: #77FF00;
-    font-family: "Inter Regular";
     font-weight: 400;
-    font-size: 16px;
 }
 
 #edit-mode-people{
     color: #fff;
     padding-left: 16px;
-    font-family: "Inter Regular";
     font-weight: 400;
 }
 
 .money2{
     display: flex;
-    height: 28px;
+    height: 32px;
     padding: 64px 0;
-    margin-left: 42px;
 }
 
 .money2 p{
@@ -515,15 +592,73 @@ h1{
 }
 
 #bitcoin{
-    width: 18px;
-    height: 18px;
-    padding: 5px 0;
+    width: 20px;
+    height: 20px;
+    padding: 3px 0;
+}
+
+#full-info-tour {
+    position: relative;
+    display: none;
+    background-image: linear-gradient(135deg , #0E2D4B, #15223E, #0F1522);
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    margin-top: -40px;
+    align-content: center;
+    width: 100%;
+    height: 100px;
+    color: white;
+    font-size: 18px;
+}
+
+.bottom-content-info-tour{
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    display: flex;
+    gap: 50px;
+}
+
+.info-tour-in-window, .rules-tour-in-window, .map-tour-in-window, .stream-tour-in-window, .team-tour-in-window, .prize-tour-in-window{
+    justify-items: center;
+    font-size: var(--font-size-pony);
+    font-family: var(--font-semibold);
+    color: #89919F;
+}
+
+.info-tour-in-window:hover, .rules-tour-in-window:hover, .map-tour-in-window:hover, .stream-tour-in-window:hover, .team-tour-in-window:hover, .prize-tour-in-window:hover{
+    color: #fff;
+}
+
+.info-tour-in-window:hover path, .rules-tour-in-window:hover path, .map-tour-in-window:hover path, .stream-tour-in-window:hover path, .team-tour-in-window:hover path{
+    stroke: #fff;
+    stroke-width: 2;
+}
+
+.prize-tour-in-window:hover path{
+    fill: #fff;
+    stroke-width: 2;
+}
+
+
+
+.participate{
+    font-family: var(--font-semibold);
+    font-size: var(--font-size-big);
+    color: #fff;
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #FF5900, #FFC95D);
 }
 
 .news-task{
     display: block;
-    margin-left: 120px;
-    margin-top: 155px;
+    padding-top: 154px;
+    align-items: center;
+    padding-left: 120px;
 }
 
 .go-play{
@@ -537,36 +672,43 @@ h1{
     background: linear-gradient(90deg, rgba(24,37,53,1) 0%, rgba(9,84,177,1) 100%);
     border-radius: 12px;
     cursor: pointer;
+    justify-self: center;
 }
 
-.gamepad{
 
+
+.join-2{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    position: relative;
+    justify-content: center;
 }
 
-.join{
+.join{  
     color: #fff;
     font-family: "Inter ExtraBold";
     font-size: 24px;
-    padding: 28px 0;
     text-shadow: 0px 0px 17px #fff;
 }
 
 .line2 {
     width: 380px;
     position:relative;
-    margin-top: 44px;
+    margin-bottom: 70px;
+    margin-top: 70px;
 }
 
 .news {
     position: relative; /* Позиционирование для основного элемента */
     width: 380px;
     height: 350px;
-    margin-top: 40px;
     background: linear-gradient(45deg, rgba(46, 81, 113, 0.37) 0%, rgba(32, 76, 169, 0.09) 100%);
     border-radius: 12px;
     color: #fff;
     overflow: hidden; /* Скрываем части псевдоэлемента, выходящие за границы */
     z-index: 1; /* z-index для основного элемента */
+    margin-bottom: 70px;
 }
 
 
@@ -581,7 +723,7 @@ h1{
 
 .head-news{
     font-family: "Inter Bold";
-    font-size: 18px;
+    font-size: var(--text-18);
     padding: 0 33px;
     text-align: center;
 }
@@ -617,14 +759,13 @@ h1{
     width: 378px;
     height: 344px;
     position: relative;
-    margin-top: 35px;
     border-radius: 12px;
     background: linear-gradient(45deg, rgba(46, 81, 113, 0.37) 0%, rgba(32, 76, 169, 0.09) 100%);
     
 }
 
 .task-full{
-    margin-left: 24px;
+    padding-left: 24px;
     padding-top: 26px;
 }
 
@@ -665,20 +806,21 @@ h1{
 }
 
 .term{
-    margin-top: 7px;
+    padding-top: 7px;
     color: #B3B3B3;
     font-family: "Inter Regular";
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 200;
-    margin-left: 26px;
+    padding-left: 26px;
 }
 
 .more-event{
+    position: relative;
     display: flex;
     width: max-content;
-    margin: 0 auto;
-    margin-top: 70px;
-    margin-bottom: 120px;
+    padding-top: 70px;
+    padding-bottom: 120px;
+    margin: auto;
     cursor: pointer;
 }
 
@@ -722,7 +864,7 @@ footer{
 }
 
 .footer-up-up{
-    margin-top: 25px;
+    padding-top: 25px;
     position: relative;
     display: flex;
     float: left;
@@ -734,7 +876,7 @@ footer{
 
 .now-play{
     display: flex;
-    margin-top: 19px;
+    padding-top: 19px;
     padding-bottom: 4px;
 }
 
@@ -745,7 +887,7 @@ footer{
 
 .quantity-online{
     display: flex;
-    margin-top: 19px;
+    padding-top: 19px;
     padding-bottom: 4px;
 }
 
@@ -755,15 +897,17 @@ footer{
 }
 
 .act-gamers{
-    margin-right: 80px;
+    display: grid;
+    grid-gap: 20px;
+    padding-right: 80px;
+    width: max-content;
 }
 
-#tour-cup-history{
-    margin-top: 20px;
-}
-
-#ques-supp-comm{
-    margin-top: 20px;
+.help{
+    display: grid;
+    grid-gap: 20px;
+    padding-right: 80px;
+    width: max-content;
 }
 
 
@@ -774,7 +918,7 @@ footer{
 }
 
 .footer-social-media img{
-    margin-left: 24px;
+    padding-left: 24px;
 }
 
 
@@ -816,6 +960,8 @@ footer{
 
 #white-link{
     color: #fff;
+    width: max-content;
+    height: max-content;
 }
 
 #gray-link{
